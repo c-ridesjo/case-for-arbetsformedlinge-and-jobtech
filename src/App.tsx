@@ -1,4 +1,4 @@
-import './App.css'
+import './style/App.css'
 import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './Router'
