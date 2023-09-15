@@ -1,5 +1,3 @@
-
-import { DigiButton } from '@digi/arbetsformedlingen-react'
 import './App.css'
 import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css'
 import { RouterProvider } from 'react-router-dom'
@@ -10,7 +8,6 @@ function App() {
   return (
     <>
       <RouterProvider router={router}></RouterProvider>
-      <DigiButton onAfOnClick={() => {}}>Hej</DigiButton>
     </> 
   )
 }
