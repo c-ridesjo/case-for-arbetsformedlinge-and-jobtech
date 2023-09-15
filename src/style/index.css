@@ -1,0 +1,41 @@
+:root {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+}
+
+header {
+  background-color: #005B4A;
+  padding: 3rem;
+}
+
+main {
+  margin: 1rem;
+}
+
+h1 {
+  margin: auto;
+}
+
+footer {
+  background-color: #005B4A;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
