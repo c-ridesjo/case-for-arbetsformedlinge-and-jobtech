@@ -2,11 +2,10 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
 }
 
 header {
-  background-color: #005B4A;
+  background-color: #005b4a;
   padding: 3rem;
 }
 
@@ -18,14 +17,50 @@ h1 {
   margin: auto;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+input {
+  width: 30%;
+  padding: 1rem;
+  border: none;
+  font-size: 1.25rem;
+  color: #432e15;
+  background-color: #ffeccc;
+}
+
+textarea {
+  width: 500px;
+  padding: 1rem;
+  border: none;
+  font-size: 1.25rem;
+  color: #432e15;
+  background-color: #ffeccc;
+}
+
+.search-link {
+  background-color: #c2945e;
+  color: #432e15;
+  padding: 1rem;
+  border: none;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 500px;
+}
+
 footer {
-  background-color: #005B4A;
+  background-color: #005b4a;
   padding: 1rem;
   position: fixed;
   bottom: 0;
   width: 100vw;
 }
-
 
 @media (prefers-color-scheme: light) {
   :root {

@@ -30,7 +30,7 @@ export const SearchForm = () => {
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
-            <button>Sök yrken</button>
+            <button className="search-link">Sök yrken</button>
           </Link>
         </Form>
       </main>
