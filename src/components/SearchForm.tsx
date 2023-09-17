@@ -1,6 +1,11 @@
 import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
+import { Link, Form } from "react-router-dom";
+import { useState } from "react";
 
 export const SearchForm = () => {
+  const [educationTitle, setEducationTitle] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
     <DigiTypographyMeta>
       <header>
@@ -8,11 +13,26 @@ export const SearchForm = () => {
       </header>
 
       <main>
-        <form>
-          <input type="text" placeholder="Utbildningstitel"></input>
-          <input type="text" placeholder="Beskrivning"></input>
-          <button type="submit">Sök yrken</button>
-        </form>
+        <Form>
+          <input
+            placeholder="Utbildningstitel"
+            name="utbildningstitel"
+            value={educationTitle}
+            onChange={(event) => setEducationTitle(event.target.value)}
+          ></input>
+          <textarea
+            placeholder="Beskrivning"
+            name="beskrivning"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          ></textarea>
+
+          <Link
+            to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
+          >
+            <button>Sök yrken</button>
+          </Link>
+        </Form>
       </main>
 
       <footer>
