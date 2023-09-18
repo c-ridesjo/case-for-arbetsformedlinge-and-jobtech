@@ -25,7 +25,7 @@ export const SearchForm = () => {
       <main>
         <Form>
           <DigiFormInput
-            afLabel="Etikett"
+            afLabel="Utbildningstitel"
             afVariation={FormInputVariation.MEDIUM}
             afType={FormInputType.TEXT}
             afValidation={FormInputValidation.NEUTRAL}
@@ -35,7 +35,7 @@ export const SearchForm = () => {
           />
 
           <DigiFormTextarea
-            afLabel="Etikett"
+            afLabel="Beskrivning"
             afVariation={FormTextareaVariation.MEDIUM}
             afValidation={FormTextareaValidation.NEUTRAL}
             afName="beskrivning"
@@ -51,7 +51,7 @@ export const SearchForm = () => {
               afVariation={ButtonVariation.PRIMARY}
               afFullWidth={true}
             >
-              En knapp
+              Sök yrken
             </DigiButton>
           </Link>
         </Form>

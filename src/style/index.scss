@@ -29,42 +29,39 @@ form {
   margin-top: 3rem;
 }
 
-// input {
-//   width: 30%;
-//   padding: 1rem;
-//   border: none;
-//   font-size: 1.25rem;
-//   color: #432e15;
-//   background-color: #ffeccc;
-// }
 .digi-form-input__input.sc-digi-form-input {
-  width: 30%;
-  padding: 1rem;
-  border: none;
-  font-size: 1.25rem;
-  color: #432e15;
-  background-color: #c98003;
-}
-
-textarea {
-  width: 500px;
   padding: 1rem;
   border: none;
   font-size: 1.25rem;
   color: #432e15;
   background-color: #ffeccc;
+  width: 20rem;
 }
 
-// .search-link {
-//   background-color: #c2945e;
-//   color: #432e15;
-//   padding: 1rem;
-//   border: none;
-//   font-size: 1.25rem;
-//   border-radius: 0.5rem;
-//   cursor: pointer;
-//   width: 500px;
-// }
+.sc-digi-form-textarea-h .digi-form-textarea__textarea.sc-digi-form-textarea {
+  padding: 1rem;
+  border: none;
+  font-size: 1.25rem;
+  color: #432e15;
+  background-color: #ffeccc;
+  width: 20rem;
+}
+
+.sc-digi-form-label-h .digi-form-label__label--label.sc-digi-form-label {
+  font-size: 1.25rem;
+  color: #b8a48c;
+}
+
+.sc-digi-button-h .digi-button--full-width.sc-digi-button {
+  background-color: #c2945e;
+  color: #432e15;
+  padding: 1rem;
+  border: none;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 20rem;
+}
 
 footer {
   background-color: #005b4a;
