@@ -1,13 +1,22 @@
 import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
 import { Link, Form } from "react-router-dom";
-import { FormEvent, useState } from "react";
+import { useContext, FormEvent, useState } from "react";
+import FormDataContext from "../contexts/FormDataContext";
+
 
 export const SearchForm = () => {
-  const [educationTitle, setEducationTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const { formData, setFormData } = useContext(FormDataContext);
+  const [educationTitle, setEducationTitle] = useState(formData.educationTitle);
+  const [description, setDescription] = useState(formData.description);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    setFormData(prevData => ({
+      ...prevData,
+      educationTitle,
+      description
+    })) 
   }
 
   return (
