@@ -7,7 +7,7 @@ export const SearchResult = ({ title, description, link }: SearchResultProps) =>
     <>
       <h1>{title}</h1>
       <p>{description}</p>
-      <button onClick={() => navigate(link)}>Read More</button>
+      <button onClick={() => navigate(link)}>Läs mer</button>
     </>
   );
 };
