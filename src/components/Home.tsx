@@ -2,6 +2,9 @@ import { DigiTypographyMeta } from '@digi/arbetsformedlingen-react'
 import { SearchForm } from './SearchForm'
 
 export const Home = () => {
+
+    // 
+
     return (
         <>
             <DigiTypographyMeta>

@@ -13,17 +13,21 @@ import {
   DigiButton,
   DigiFormTextarea,
 } from "@digi/arbetsformedlingen-react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Form, Link } from "react-router-dom";
 
 export const SearchForm = () => {
   const [educationTitle, setEducationTitle] = useState<string | number>("");
   const [description, setDescription] = useState("");
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <DigiTypographyMeta>
       <main>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <DigiFormInput
             afLabel="Utbildningstitel"
             afVariation={FormInputVariation.MEDIUM}
