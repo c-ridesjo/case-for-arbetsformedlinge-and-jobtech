@@ -1,10 +1,14 @@
 import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
 import { Link, Form } from "react-router-dom";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export const SearchForm = () => {
   const [educationTitle, setEducationTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  }
 
   return (
     <DigiTypographyMeta>
@@ -13,7 +17,7 @@ export const SearchForm = () => {
       </header>
 
       <main>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <input
             placeholder="Utbildningstitel"
             name="utbildningstitel"
