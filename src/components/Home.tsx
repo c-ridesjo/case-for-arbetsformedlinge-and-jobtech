@@ -3,7 +3,7 @@ import { SearchForm } from './SearchForm'
 
 export const Home = () => {
 
-    // 
+    // Hämta formulärdata från context och skicka till api
 
     return (
         <>

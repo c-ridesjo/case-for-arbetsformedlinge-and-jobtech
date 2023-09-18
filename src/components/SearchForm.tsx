@@ -13,15 +13,25 @@ import {
   DigiButton,
   DigiFormTextarea,
 } from "@digi/arbetsformedlingen-react";
-import { FormEvent, useState } from "react";
+import { useContext, FormEvent, useState } from "react";
 import { Form, Link } from "react-router-dom";
+import FormDataContext from "../contexts/FormDataContext";
 
 export const SearchForm = () => {
-  const [educationTitle, setEducationTitle] = useState<string | number>("");
-  const [description, setDescription] = useState("");
+  const { formData, setFormData } = useContext(FormDataContext);
+  const [educationTitle, setEducationTitle] = useState<string | number>(
+    formData.educationTitle
+  );
+  const [description, setDescription] = useState(formData.description);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    setFormData((prevData) => ({
+      ...prevData,
+      educationTitle,
+      description,
+    }));
   };
 
   return (
