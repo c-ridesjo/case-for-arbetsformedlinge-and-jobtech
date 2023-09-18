@@ -1,43 +1,61 @@
-import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
-import { Link, Form } from "react-router-dom";
+import {
+  FormInputType,
+  FormInputValidation,
+  FormInputVariation,
+  ButtonSize,
+  ButtonVariation,
+  FormTextareaVariation,
+  FormTextareaValidation,
+} from "@digi/arbetsformedlingen";
+import {
+  DigiFormInput,
+  DigiTypographyMeta,
+  DigiButton,
+  DigiFormTextarea,
+} from "@digi/arbetsformedlingen-react";
 import { useState } from "react";
+import { Form, Link } from "react-router-dom";
 
 export const SearchForm = () => {
-  const [educationTitle, setEducationTitle] = useState("");
+  const [educationTitle, setEducationTitle] = useState<string | number>("");
   const [description, setDescription] = useState("");
 
   return (
     <DigiTypographyMeta>
-      <header>
-        <h1>Logga</h1>
-      </header>
-
       <main>
         <Form>
-          <input
-            placeholder="Utbildningstitel"
-            name="utbildningstitel"
-            value={educationTitle}
-            onChange={(event) => setEducationTitle(event.target.value)}
-          ></input>
-          <textarea
-            placeholder="Beskrivning"
-            name="beskrivning"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-          ></textarea>
+          <DigiFormInput
+            afLabel="Etikett"
+            afVariation={FormInputVariation.MEDIUM}
+            afType={FormInputType.TEXT}
+            afValidation={FormInputValidation.NEUTRAL}
+            onAfOnChange={(event) => setEducationTitle(event.target.value)}
+            afValue={educationTitle}
+            afName="utbildningstitel"
+          />
+
+          <DigiFormTextarea
+            afLabel="Etikett"
+            afVariation={FormTextareaVariation.MEDIUM}
+            afValidation={FormTextareaValidation.NEUTRAL}
+            afName="beskrivning"
+            afValue={description}
+            onAfOnChange={(event) => setDescription(event.target.value)}
+          ></DigiFormTextarea>
 
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
-            <button className="search-link">Sök yrken</button>
+            <DigiButton
+              afSize={ButtonSize.LARGE}
+              afVariation={ButtonVariation.PRIMARY}
+              afFullWidth={true}
+            >
+              En knapp
+            </DigiButton>
           </Link>
         </Form>
       </main>
-
-      <footer>
-        <h3>Footertext</h3>
-      </footer>
     </DigiTypographyMeta>
   );
 };
