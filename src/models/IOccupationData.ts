@@ -1,7 +1,7 @@
 export interface OccupationData {
-    name: string;
-    description: string;
-    id: string;
+    occupation_label: string; // name?
+    description: string; // ?
+    id: string; // concept_taxonomy_id i stället?
     
     hits_total: number;
     hits_returned: number;
