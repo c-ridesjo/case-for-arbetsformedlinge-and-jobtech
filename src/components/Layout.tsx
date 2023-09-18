@@ -14,6 +14,6 @@ export const Layout = () => {
   
            <footer><h3>Footertext</h3></footer> 
         </DigiTypographyMeta>
-          
+        </>
   );
 };
