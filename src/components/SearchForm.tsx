@@ -27,11 +27,23 @@ export const SearchForm = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    setFormData((prevData) => ({
+    console.log("skicka formulär");
+
+    onSubmit({
+      educationTitle:
+        typeof educationTitle === "number"
+          ? educationTitle.toString()
+          : educationTitle,
+      description,
+    });
+
+    /*
+    setFormData(prevData => ({
       ...prevData,
       educationTitle,
       description,
-    }));
+    })); 
+    */
   };
 
   return (
@@ -56,6 +68,8 @@ export const SearchForm = () => {
             afValue={description}
             onAfOnChange={(event) => setDescription(event.target.value)}
           ></DigiFormTextarea>
+
+          <button type="submit">Tillfällig testknapp</button>
 
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}

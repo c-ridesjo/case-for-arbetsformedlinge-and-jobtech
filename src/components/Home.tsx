@@ -1,13 +1,22 @@
 import { DigiTypographyMeta } from '@digi/arbetsformedlingen-react'
 import { SearchForm } from './SearchForm'
+import { matchByText } from '../services/serviceBase';
 
 export const Home = () => {
 
-    // Hämta formulärdata från context och skicka till api
-
-    const handleSearchSubmit = (formData: { educationTitle: string; description: string }) => {
+    const handleSearchSubmit = async (formData: { educationTitle: string; description: string }) => {
         console.log("Data", formData);
         
+        const { educationTitle, description } = formData;
+
+        try {
+            const responseData = await matchByText(educationTitle, description)
+
+            console.log('svar', responseData);
+            
+        } catch (error){
+            console.error('error', error);
+        }
 
       }
 
