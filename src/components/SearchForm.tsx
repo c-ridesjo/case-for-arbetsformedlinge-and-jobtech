@@ -1,19 +1,19 @@
 import {
+  ButtonSize,
+  ButtonVariation,
   FormInputType,
   FormInputValidation,
   FormInputVariation,
-  ButtonSize,
-  ButtonVariation,
-  FormTextareaVariation,
   FormTextareaValidation,
+  FormTextareaVariation,
 } from "@digi/arbetsformedlingen";
 import {
-  DigiFormInput,
-  DigiTypographyMeta,
   DigiButton,
+  DigiFormInput,
   DigiFormTextarea,
+  DigiTypographyMeta,
 } from "@digi/arbetsformedlingen-react";
-import { useContext, FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { Form, Link } from "react-router-dom";
 import FormDataContext from "../contexts/FormDataContext";
 
