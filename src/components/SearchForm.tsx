@@ -20,7 +20,7 @@ import { FormEvent, useState } from "react";
 //import FormDataContext from "../contexts/FormDataContext";
         
 interface SearchFormProps {
-  onSubmit: (formData: { educationTitle: string; description: string }) => void;
+  onSubmit: (formData: { input_headline: string; input_text: string }) => void;
 }  
 
 export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
@@ -36,8 +36,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
     
 
     onSubmit({
-      educationTitle: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
-      description,
+      input_headline: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
+      input_text: description,
     });
 
     /*

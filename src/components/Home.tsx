@@ -4,13 +4,13 @@ import { matchByText } from '../services/serviceBase';
 
 export const Home = () => {
 
-    const handleSearchSubmit = async (formData: { educationTitle: string; description: string }) => {
+    const handleSearchSubmit = async (formData: { input_headline: string; input_text: string }) => {
         console.log("Data", formData);
         
-        const { educationTitle, description } = formData;
+        const { input_headline, input_text } = formData;
 
         try {
-            const responseData = await matchByText(educationTitle, description)
+            const responseData = await matchByText(input_headline, input_text)
 
             console.log('svar', responseData);
             

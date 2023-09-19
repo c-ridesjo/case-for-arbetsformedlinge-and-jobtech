@@ -12,8 +12,8 @@ export const post = async <T>(url: string, data: T): Promise<T> => {
     return response.data;
 };
 
-export const matchByText = async (educationTitle: string, description: string) => {
-  return post('/v1/occupations/match-by-text', { educationTitle, description });
+export const matchByText = async (input_text: string, input_headline: string) => {
+  return post('/v1/occupations/match-by-text?', { input_text,  input_headline});
 };
 
 export const getEnrichedOccupations = async (occupationId: string) => {
