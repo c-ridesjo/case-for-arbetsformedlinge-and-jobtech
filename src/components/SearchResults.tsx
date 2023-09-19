@@ -17,6 +17,7 @@ export const SearchResults = () => {
 
   const [data, setData] = useState<OccupationData[]>([]);
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
 
   const fetchOccupationsByText = async (text: string) => {
     try {
@@ -25,21 +26,13 @@ export const SearchResults = () => {
         input_headline: "front end developer", 
         limit: 10,
         offset: 0,
-        include_metadata: false,
-        text: text
+        include_metadata: false
       });      
       
-      setData(response.data.related_occupations);
-      
-      console.log('API Response Data:', response.data);
-      if (response.data.related_occupations && response.data.related_occupations.length > 0) {
-        console.log('First Item Data - Name:', response.data.related_occupations[0].occupation_label);
-        console.log('First Item Data - Description:', response.data.related_occupations[0].description);
-        console.log('First Item Data - ID:', response.data.related_occupations[0].id);
-      }
-  
+      setData(response.data.related_occupations);   
     } catch (error) {
       console.error('Error fetching data:', error);
+      setError('Ett fel uppstod vid hämtning av data. Vänligen försök igen senare.');
     }
   };
   
@@ -56,6 +49,7 @@ export const SearchResults = () => {
           <DigiButton onClick={() => navigate("/")}>Home</DigiButton>
           <h2>Titel</h2>
           <p>Beskrivning {description}</p>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
           <div className="box-container">
         {data.map((occupation: OccupationData) => (
           <SearchResult
