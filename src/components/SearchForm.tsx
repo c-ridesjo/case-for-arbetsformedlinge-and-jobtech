@@ -1,3 +1,4 @@
+
 import {
   FormInputType,
   FormInputValidation,
@@ -13,17 +14,42 @@ import {
   DigiButton,
   DigiFormTextarea,
 } from "@digi/arbetsformedlingen-react";
-import { useState } from "react";
-import { Form, Link } from "react-router-dom";
 
-export const SearchForm = () => {
+import { Form, Link } from "react-router-dom";
+import { FormEvent, useState } from "react";
+//import FormDataContext from "../contexts/FormDataContext";
+        
+interface SearchFormProps {
+  onSubmit: (formData: { educationTitle: string; description: string }) => void;
+}  
+
+export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
+  //const { formData, setFormData } = useContext(FormDataContext);
   const [educationTitle, setEducationTitle] = useState<string | number>("");
   const [description, setDescription] = useState("");
+
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    console.log("skicka formulär");
+    
+
+    onSubmit({educationTitle, description});
+
+    /*
+    setFormData(prevData => ({
+      ...prevData,
+      educationTitle,
+      description
+    })) */
+  }
 
   return (
     <DigiTypographyMeta>
       <main>
-        <Form>
+
+        <Form onSubmit={handleSubmit}>
           <DigiFormInput
             afLabel="Utbildningstitel"
             afVariation={FormInputVariation.MEDIUM}
@@ -43,9 +69,11 @@ export const SearchForm = () => {
             onAfOnChange={(event) => setDescription(event.target.value)}
           ></DigiFormTextarea>
 
+
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
+
             <DigiButton
               afSize={ButtonSize.LARGE}
               afVariation={ButtonVariation.PRIMARY}
@@ -53,6 +81,7 @@ export const SearchForm = () => {
             >
               Sök yrken
             </DigiButton>
+
           </Link>
         </Form>
       </main>
