@@ -13,16 +13,19 @@ import {
   DigiFormTextarea,
   DigiTypographyMeta,
 } from "@digi/arbetsformedlingen-react";
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Form, Link } from "react-router-dom";
-import FormDataContext from "../contexts/FormDataContext";
 
-export const SearchForm = () => {
-  const { formData, setFormData } = useContext(FormDataContext);
-  const [educationTitle, setEducationTitle] = useState<string | number>(
-    formData.educationTitle
-  );
-  const [description, setDescription] = useState(formData.description);
+//import FormDataContext from "../contexts/FormDataContext";
+
+interface SearchFormProps {
+  onSubmit: (formData: { input_headline: string; input_text: string }) => void;
+}
+
+export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
+  //const { formData, setFormData } = useContext(FormDataContext);
+  const [educationTitle, setEducationTitle] = useState<string | number>("");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -30,11 +33,11 @@ export const SearchForm = () => {
     console.log("skicka formulär");
 
     onSubmit({
-      educationTitle:
+      input_headline:
         typeof educationTitle === "number"
           ? educationTitle.toString()
           : educationTitle,
-      description,
+      input_text: description,
     });
 
     /*
