@@ -3,12 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import {
   DigiLayoutContainer,
-  DigiTypographyMeta,
+  DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { DigiButton } from "@digi/arbetsformedlingen-react";
 import axios from "axios";
 import { SearchResult } from "./SearchResult";
 import { OccupationData } from "../models/IOccupationData";
+import {
+  StyledP,
+  StyledH1,
+  Column,
+  ColumnContainer,
+} from "../components/Styled/StyledSearchResult";
 
 export const SearchResults = () => {
   const [searchParams] = useSearchParams();
@@ -53,24 +59,30 @@ export const SearchResults = () => {
 
   return (
     <>
-      <DigiTypographyMeta>
-        <DigiLayoutContainer>
+      <DigiTypography af-variation="large">
+        <DigiLayoutContainer style={{ padding: "0" }}>
           <DigiButton onClick={() => navigate("/")}>Home</DigiButton>
-          <h2>Titel</h2>
-          <p>Beskrivning {description}</p>
+          <ColumnContainer>
+            <Column>
+              <StyledH1>Titel</StyledH1>
+            </Column>
+            <Column>
+              <StyledP>Beskrivning {description}</StyledP>
+            </Column>
+          </ColumnContainer>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <div className="box-container">
+          <DigiLayoutContainer>
             {data.map((occupation: OccupationData) => (
               <SearchResult
                 key={occupation.id}
                 title={occupation.occupation_label}
-                description={occupation.description}      // ?
+                description={occupation.description} // ?
                 link={`/selected-job/${occupation.id}`}
               />
             ))}
-          </div>
+          </DigiLayoutContainer>
         </DigiLayoutContainer>
-      </DigiTypographyMeta>
+      </DigiTypography>
     </>
   );
 };
