@@ -1,17 +1,33 @@
-import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
-import { Link, Form } from "react-router-dom";
+
+import {
+  FormInputType,
+  FormInputValidation,
+  FormInputVariation,
+  ButtonSize,
+  ButtonVariation,
+  FormTextareaVariation,
+  FormTextareaValidation,
+} from "@digi/arbetsformedlingen";
+import {
+  DigiFormInput,
+  DigiTypographyMeta,
+  DigiButton,
+  DigiFormTextarea,
+} from "@digi/arbetsformedlingen-react";
+
+import { Form, Link } from "react-router-dom";
 import { FormEvent, useState } from "react";
 //import FormDataContext from "../contexts/FormDataContext";
-
-
+        
 interface SearchFormProps {
   onSubmit: (formData: { educationTitle: string; description: string }) => void;
-}
+}  
 
 export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   //const { formData, setFormData } = useContext(FormDataContext);
-  const [educationTitle, setEducationTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [educationTitle, setEducationTitle] = useState<string | number>("");
+  const [description, setDescription] = useState("");
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -31,36 +47,44 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
 
   return (
     <DigiTypographyMeta>
-      <header>
-        <h1>Logga</h1>
-      </header>
-
       <main>
+
         <Form onSubmit={handleSubmit}>
-          <input
-            placeholder="Utbildningstitel"
-            name="utbildningstitel"
-            value={educationTitle}
-            onChange={(event) => setEducationTitle(event.target.value)}
-          ></input>
-          <textarea
-            placeholder="Beskrivning"
-            name="beskrivning"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-          ></textarea>
+          <DigiFormInput
+            afLabel="Utbildningstitel"
+            afVariation={FormInputVariation.MEDIUM}
+            afType={FormInputType.TEXT}
+            afValidation={FormInputValidation.NEUTRAL}
+            onAfOnChange={(event) => setEducationTitle(event.target.value)}
+            afValue={educationTitle}
+            afName="utbildningstitel"
+          />
+
+          <DigiFormTextarea
+            afLabel="Beskrivning"
+            afVariation={FormTextareaVariation.MEDIUM}
+            afValidation={FormTextareaValidation.NEUTRAL}
+            afName="beskrivning"
+            afValue={description}
+            onAfOnChange={(event) => setDescription(event.target.value)}
+          ></DigiFormTextarea>
+
 
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
-            <button className="search-link" type="submit">Sök yrken</button>
+
+            <DigiButton
+              afSize={ButtonSize.LARGE}
+              afVariation={ButtonVariation.PRIMARY}
+              afFullWidth={true}
+            >
+              Sök yrken
+            </DigiButton>
+
           </Link>
         </Form>
       </main>
-
-      <footer>
-        <h3>Footertext</h3>
-      </footer>
     </DigiTypographyMeta>
   );
 };
