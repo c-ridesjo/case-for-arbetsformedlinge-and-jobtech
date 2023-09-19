@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 export const SelectedJob = () => {
   const { occupationId } = useParams();
   console.log(occupationId);
+  const [occupationDetails, setOccupationDetails] = useState({} as any);
 
   axios
     .get(
@@ -11,7 +13,8 @@ export const SelectedJob = () => {
     )
     .then((res) => {
       console.log(res);
+      setOccupationDetails(res.data);
     });
 
-  return <></>;
+  return <>{JSON.stringify(occupationDetails, null, 4)}</>;
 };
