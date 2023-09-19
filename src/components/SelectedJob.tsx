@@ -31,5 +31,15 @@ export const SelectedJob = () => {
         setOccupationDetails(res.data);
       });
   }
-  return <>{JSON.stringify(occupationDetails, null, 4)}</>;
+  return (
+    <>
+      <h3>{occupationDetails?.occupation_label}</h3>
+      <p>ID: {occupationDetails?.id}</p>
+      <p>Concept taxonomy ID: {occupationDetails?.concept_taxonomy_id}</p>
+      <p>Legacy AMS taxonomy ID: {occupationDetails?.legacy_ams_taxonomy_id}</p>
+      <p>{occupationDetails?.occupation_group.occupation_group_label}</p>
+      <p>{occupationDetails?.occupation_group.concept_taxonomy_id}</p>
+      <p>{occupationDetails?.occupation_group.ssyk}</p>
+    </>
+  );
 };
