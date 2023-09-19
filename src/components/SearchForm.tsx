@@ -1,22 +1,32 @@
 import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
 import { Link, Form } from "react-router-dom";
-import { useContext, FormEvent, useState } from "react";
-import FormDataContext from "../contexts/FormDataContext";
+import { FormEvent, useState } from "react";
+//import FormDataContext from "../contexts/FormDataContext";
 
 
-export const SearchForm = () => {
-  const { formData, setFormData } = useContext(FormDataContext);
-  const [educationTitle, setEducationTitle] = useState(formData.educationTitle);
-  const [description, setDescription] = useState(formData.description);
+interface SearchFormProps {
+  onSubmit: (formData: { educationTitle: string; description: string }) => void;
+}
+
+export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
+  //const { formData, setFormData } = useContext(FormDataContext);
+  const [educationTitle, setEducationTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
+    console.log("skicka formulär");
+    
+
+    onSubmit({educationTitle, description});
+
+    /*
     setFormData(prevData => ({
       ...prevData,
       educationTitle,
       description
-    })) 
+    })) */
   }
 
   return (
@@ -43,7 +53,7 @@ export const SearchForm = () => {
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
-            <button className="search-link">Sök yrken</button>
+            <button className="search-link" type="submit">Sök yrken</button>
           </Link>
         </Form>
       </main>
