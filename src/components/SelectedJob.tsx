@@ -1,5 +1,8 @@
+import { useParams } from "react-router-dom";
+
 export const SelectedJob = () => {
-    return (
-        <></>
-    )
-}
+  const { occupationId } = useParams();
+  console.log(occupationId);
+
+  return <></>;
+};
