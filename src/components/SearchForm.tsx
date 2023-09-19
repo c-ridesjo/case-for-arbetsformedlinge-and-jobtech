@@ -35,7 +35,10 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
     console.log("skicka formulär");
     
 
-    onSubmit({educationTitle, description});
+    onSubmit({
+      educationTitle: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
+      description,
+    });
 
     /*
     setFormData(prevData => ({
@@ -69,11 +72,12 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
             onAfOnChange={(event) => setDescription(event.target.value)}
           ></DigiFormTextarea>
 
+          <button type='submit'>Tillfällig testknapp</button>
+
 
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
-
             <DigiButton
               afSize={ButtonSize.LARGE}
               afVariation={ButtonVariation.PRIMARY}
@@ -83,6 +87,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
             </DigiButton>
 
           </Link>
+
+          
         </Form>
       </main>
     </DigiTypographyMeta>
