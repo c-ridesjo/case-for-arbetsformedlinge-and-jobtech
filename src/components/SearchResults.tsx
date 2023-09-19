@@ -19,8 +19,7 @@ export const SearchResults = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  const fetchOccupationsByText = async () => {
-    // (text: string) sedan när jag inte hårdkodar
+  const fetchOccupationsByText = async () => {    // (text: string) sedan när jag inte hårdkodar
     setError(null);
     try {
       const response = await axios.post(
@@ -48,11 +47,9 @@ export const SearchResults = () => {
   };
 
   useEffect(() => {
-    console.log('educationTitle value:', educationTitle);
+    console.log("educationTitle value:", educationTitle);
     fetchOccupationsByText();
   }, [educationTitle]);
-  
-  
 
   return (
     <>
@@ -67,7 +64,7 @@ export const SearchResults = () => {
               <SearchResult
                 key={occupation.id}
                 title={occupation.occupation_label}
-                description={occupation.description} // ?
+                description={occupation.description}      // ?
                 link={`/selected-job/${occupation.id}`}
               />
             ))}
