@@ -1,5 +1,6 @@
 import {
   ButtonSize,
+  ButtonType,
   ButtonVariation,
   FormInputType,
   FormInputValidation,
@@ -25,19 +26,20 @@ interface SearchFormProps {
 export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   //const { formData, setFormData } = useContext(FormDataContext);
   const [educationTitle, setEducationTitle] = useState<string | number>("");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState<string | number>("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    console.log("skicka formulär");
+    console.log(description);
 
     onSubmit({
       input_headline:
         typeof educationTitle === "number"
           ? educationTitle.toString()
           : educationTitle,
-      input_text: description,
+      input_text:
+        typeof description === "number" ? description.toString() : description,
     });
 
     /*
@@ -68,23 +70,22 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
             afVariation={FormTextareaVariation.MEDIUM}
             afValidation={FormTextareaValidation.NEUTRAL}
             afName="beskrivning"
-            afValue={description}
+            afValue={description as string}
             onAfOnChange={(event) => setDescription(event.target.value)}
           ></DigiFormTextarea>
 
-          <button type="submit">Tillfällig testknapp</button>
+          <DigiButton
+            afSize={ButtonSize.LARGE}
+            afVariation={ButtonVariation.PRIMARY}
+            afType={ButtonType.SUBMIT}
+            afFullWidth={true}
+          >
+            Sök yrken
+          </DigiButton>
 
           <Link
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
-          >
-            <DigiButton
-              afSize={ButtonSize.LARGE}
-              afVariation={ButtonVariation.PRIMARY}
-              afFullWidth={true}
-            >
-              Sök yrken
-            </DigiButton>
-          </Link>
+          ></Link>
         </Form>
       </main>
     </DigiTypographyMeta>
