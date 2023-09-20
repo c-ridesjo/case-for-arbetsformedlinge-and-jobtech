@@ -71,31 +71,50 @@ form {
   color: #432e15;
   width: 7rem;
   font-size: 1.25rem;
+  display: block;
+
 }
 
-.sc-digi-button-h .digi-button--size-medium.sc-digi-button :hover {
+.sc-digi-button-h .digi-button--size-medium.sc-digi-button:hover {
   background-color: #8A612E;
-color: #FFECCC;
-}
-
-.digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button {
-  background-color: #c2945e;
-  color: #432e15;
-  
+  color: #FFECCC;
 }
 
 .sc-digi-link-s>a {
-  color: #005B4A;
+  color: #005B4A !important;
+  margin-bottom: 3rem;
 }
 
-digi-typography h1 {
+.digi-typography h1 {
   margin-left: 0px;
   font-weight: 100;
+}
+
+.digi-typography h2 {
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
 }
 
 div.sc-dmyDmy.aFaBd {
   width: 30rem;
 }
+
+div.sc-beyTiQ.udJhQ {
+  border: 1px solid black;
+  width: 30rem;
+  margin: 10px;
+  margin-top: 20px;
+  background-color: #8A612E;
+  color: #FFECCC;
+}
+
+.sc-digi-layout-container-h .digi-layout-container.sc-digi-layout-container {
+  background-color: #FFECCC;
+}
+
+/* div.digi-typography.digi-typography--small {
+  border: 2 px solid black;
+} */
 
 footer {
   background-color: #005b4a;

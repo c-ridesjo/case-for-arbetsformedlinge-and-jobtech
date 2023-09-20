@@ -18,7 +18,8 @@ export const SearchResults = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  const fetchOccupationsByText = async () => {    // (text: string) sedan när jag inte hårdkodar
+  const fetchOccupationsByText = async () => {
+    // (text: string) sedan när jag inte hårdkodar
     setError(null);
     try {
       const response = await axios.post(
@@ -56,7 +57,14 @@ export const SearchResults = () => {
         <DigiLayoutContainer
           style={{ padding: "0", backgroundColor: "#FFECCC" }}
         >
-          <DigiButton onClick={() => navigate("/")}>Home</DigiButton>
+          <DigiButton
+            af-size="medium"
+            af-variation="primary"
+            af-full-width="false"
+            onClick={() => navigate("/")}
+          >
+            Tillbaka
+          </DigiButton>
           {error && <p style={{ color: "red" }}>{error}</p>}
           <DigiLayoutContainer>
             {data.map((occupation: OccupationData) => (

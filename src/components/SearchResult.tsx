@@ -2,7 +2,6 @@ import { SearchResultProps } from "../models/ISearchResult";
 import { DigiLink, DigiTypography } from "@digi/arbetsformedlingen-react";
 import {
   VerticalLayout,
-  OccupationGroupLabel,
 } from "./Styled/StyledSearchResult";
 
 export const SearchResult = ({
@@ -12,8 +11,8 @@ export const SearchResult = ({
   return (
     <DigiTypography af-variation="small">
       <VerticalLayout>
-        <h1>{title}</h1>
-        <OccupationGroupLabel>{occupationGroupLabel}</OccupationGroupLabel>
+        <h2>{title}</h2>
+        <p>{occupationGroupLabel}</p>        
         <DigiLink
           style={{ color: "#005B4A" }}
           af-href="#"
