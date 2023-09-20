@@ -25,7 +25,7 @@ interface SearchFormProps {
 }  
 
 export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
-  //const { formData, setFormData } = useContext(FormDataContext);
+  //const { setFormData } = useContext(FormDataContext);
   const [educationTitle, setEducationTitle] = useState<string | number>("");
   const [description, setDescription] = useState<string | number>("");
 
@@ -33,21 +33,17 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
-    console.log(description);
+    console.log('beskrivning:', description);
+    console.log('titel:', educationTitle);
     
-
     onSubmit({
       input_headline: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
       input_text: typeof description === "number" ? description.toString() : description,
       
-    });
+    }); 
 
-    /*
-    setFormData(prevData => ({
-      ...prevData,
-      educationTitle,
-      description
-    })) */
+    
+    
   }
 
   return (
@@ -55,6 +51,9 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
       <main>
 
         <Form onSubmit={handleSubmit}>
+
+
+
           <DigiFormInput
             afLabel="Utbildningstitel"
             afVariation={FormInputVariation.MEDIUM}
@@ -69,11 +68,10 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
             afLabel="Beskrivning"
             afVariation={FormTextareaVariation.MEDIUM}
             afValidation={FormTextareaValidation.NEUTRAL}
-            afName="beskrivning"
-            afValue={description as string}
             onAfOnChange={(event) => setDescription(event.target.value)}
+            afValue={description as string}
+            afName="beskrivning"
           ></DigiFormTextarea>
-          
 
             <DigiButton
               afSize={ButtonSize.LARGE}
