@@ -1,36 +1,20 @@
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-
-interface OccupationDetails {
-  id: string;
-  occupation_label: string;
-  concept_taxonomy_id: string;
-  legacy_ams_taxonomy_id: string;
-  occupation_group: {
-    occupation_group_label: string;
-    concept_taxonomy_id: string;
-    ssyk: string;
-  };
-}
+import { getEnrichedOccupations } from "../services/serviceBase";
+import { IOccupationDetails } from "../models/IOccupationDetails";
 
 export const SelectedJob = () => {
   const { occupationId } = useParams();
-  console.log(occupationId);
   const [occupationDetails, setOccupationDetails] = useState<
-    OccupationDetails | undefined
+    IOccupationDetails | undefined
   >(undefined);
 
-  if (occupationDetails === undefined) {
-    axios
-      .get(
-        `https://jobed-connect-api.jobtechdev.se/v1/enriched_occupations?occupation_id=${occupationId}`
-      )
-      .then((res) => {
-        console.log(res);
-        setOccupationDetails(res.data);
-      });
+  if (occupationDetails === undefined && occupationId !== undefined) {
+    getEnrichedOccupations(occupationId).then((response) => {
+      setOccupationDetails(response);
+    });
   }
+
   return (
     <>
       <h3>{occupationDetails?.occupation_label}</h3>
