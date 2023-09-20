@@ -8,7 +8,7 @@ import {
 
 export const SearchResult = ({
   title,
-  description,
+  occupationGroupLabel,
   link,
 }: SearchResultProps) => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export const SearchResult = ({
     <DigiTypography af-variation="small">
       <DigiLayoutColumns>
         <h1>{title}</h1>
-        <p>{description}</p>
+        <p>{occupationGroupLabel}</p>
         <DigiLinkButton onClick={() => navigate(link)} afHref={""}>
           Läs mer
         </DigiLinkButton>{" "}

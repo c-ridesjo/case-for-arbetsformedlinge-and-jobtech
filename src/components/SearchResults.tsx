@@ -75,8 +75,8 @@ export const SearchResults = () => {
             {data.map((occupation: OccupationData) => (
               <SearchResult
                 key={occupation.id}
-                title={occupation.occupation_label}
-                description={occupation.description} // ?
+                title={occupation.occupation_label}                
+                occupationGroupLabel={occupation.occupation_group.occupation_group_label}
                 link={`/selected-job/${occupation.id}`}
               />
             ))}
