@@ -1,26 +1,29 @@
-import { useNavigate } from "react-router-dom";
 import { SearchResultProps } from "../models/ISearchResult";
+import { DigiLink, DigiTypography } from "@digi/arbetsformedlingen-react";
 import {
-  DigiLayoutColumns,
-  DigiLinkButton,
-  DigiTypography,
-} from "@digi/arbetsformedlingen-react";
+  VerticalLayout,
+  OccupationGroupLabel,
+} from "./Styled/StyledSearchResult";
 
 export const SearchResult = ({
   title,
   occupationGroupLabel,
-  link,
 }: SearchResultProps) => {
-  const navigate = useNavigate();
   return (
     <DigiTypography af-variation="small">
-      <DigiLayoutColumns>
+      <VerticalLayout>
         <h1>{title}</h1>
-        <p>{occupationGroupLabel}</p>
-        <DigiLinkButton onClick={() => navigate(link)} afHref={""}>
-          Läs mer
-        </DigiLinkButton>{" "}
-      </DigiLayoutColumns>
+        <OccupationGroupLabel>{occupationGroupLabel}</OccupationGroupLabel>
+        <DigiLink
+          style={{ color: "#005B4A" }}
+          af-href="#"
+          af-target="_blank"
+          af-variation="small"
+          afHref={""}
+        >
+          Läs mer här
+        </DigiLink>
+      </VerticalLayout>
     </DigiTypography>
   );
 };

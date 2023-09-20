@@ -9,17 +9,10 @@ import { DigiButton } from "@digi/arbetsformedlingen-react";
 import axios from "axios";
 import { SearchResult } from "./SearchResult";
 import { OccupationData } from "../models/IOccupationData";
-import {
-  StyledP,
-  StyledH1,
-  Column,
-  ColumnContainer,
-} from "../components/Styled/StyledSearchResult";
 
 export const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const educationTitle = searchParams.get("educationTitle") || "";
-  const description = searchParams.get("description") || "";
 
   const [data, setData] = useState<OccupationData[]>([]);
   const navigate = useNavigate();
@@ -60,23 +53,19 @@ export const SearchResults = () => {
   return (
     <>
       <DigiTypography af-variation="large">
-        <DigiLayoutContainer style={{ padding: "0" }}>
+        <DigiLayoutContainer
+          style={{ padding: "0", backgroundColor: "#FFECCC" }}
+        >
           <DigiButton onClick={() => navigate("/")}>Home</DigiButton>
-          <ColumnContainer>
-            <Column>
-              <StyledH1>Titel</StyledH1>
-            </Column>
-            <Column>
-              <StyledP>Beskrivning {description}</StyledP>
-            </Column>
-          </ColumnContainer>
           {error && <p style={{ color: "red" }}>{error}</p>}
           <DigiLayoutContainer>
             {data.map((occupation: OccupationData) => (
               <SearchResult
                 key={occupation.id}
-                title={occupation.occupation_label}                
-                occupationGroupLabel={occupation.occupation_group.occupation_group_label}
+                title={occupation.occupation_label}
+                occupationGroupLabel={
+                  occupation.occupation_group.occupation_group_label
+                }
                 link={`/selected-job/${occupation.id}`}
               />
             ))}

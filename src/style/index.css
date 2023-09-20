@@ -63,6 +63,40 @@ form {
   width: 20rem;
 }
 
+.sc-digi-button-h .digi-button--size-medium.sc-digi-button {
+  background-color: #c2945e;
+  color: #432e15;
+  padding: 0.2rem;
+  border: 2px solid black;
+  color: #432e15;
+  width: 7rem;
+  font-size: 1.25rem;
+}
+
+.sc-digi-button-h .digi-button--size-medium.sc-digi-button :hover {
+  background-color: #8A612E;
+color: #FFECCC;
+}
+
+.digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button {
+  background-color: #c2945e;
+  color: #432e15;
+  
+}
+
+.sc-digi-link-s>a {
+  color: #005B4A;
+}
+
+digi-typography h1 {
+  margin-left: 0px;
+  font-weight: 100;
+}
+
+div.sc-dmyDmy.aFaBd {
+  width: 30rem;
+}
+
 footer {
   background-color: #005b4a;
   padding: 1rem;
