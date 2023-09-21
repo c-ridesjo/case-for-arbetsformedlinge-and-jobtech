@@ -71,7 +71,7 @@ form {
   width: 7rem;
   font-size: 1.25rem;
   display: block;
-
+  box-shadow: 0 4px 4px 0 #432E15;
 }
 
 .sc-digi-button-h .digi-button--size-medium.sc-digi-button:hover {
@@ -87,6 +87,12 @@ form {
 .digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button {
   background-color: #005B4A ;
   border: 1px solid #FFECCC;
+  color: #FFECCC !important;
+  box-shadow: 0 4px 4px 0 #432E15;
+}
+
+.digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button:hover {
+  background-color: #004135 ;
   color: #FFECCC !important;
 }
 
@@ -108,23 +114,8 @@ div.sc-dmyDmy.aFaBd {
   width: 30rem;
 }
 
-div.sc-beyTiQ.udJhQ {
-  width: 30rem;
-  margin: 10px;
-  margin-top: 20px;
-  background-color: #8A612E;
-  color: #FFECCC;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: #432e15;
-}
-
 /* .sc-digi-layout-container-h .digi-layout-container.sc-digi-layout-container {
   background-color: #FFECCC;
-} */
-
-/* div.digi-typography.digi-typography--small {
-  border: 2 px solid black;
 } */
 
 footer {

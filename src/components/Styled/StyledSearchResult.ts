@@ -1,37 +1,29 @@
 import styled from "styled-components";
 
-// export const ColumnContainer = styled.div`
-//   display: flex;
-//   justify-content: start;
-//   align-items: left;
-//   margin-top: 2rem;
-// `;
+export const ColumnContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 2rem;
+`;
 
-// export const Column = styled.div`
-//   width: 27rem;
-//   margin: 0 1rem;
-// `;
-
-// export const StyledP = styled.h1`
-//   margin: 0;
-//   color: #c2945e;
-// `;
-
-// export const StyledH2 = styled.h2`
-//   margin: 0;
-//   color: blue;
-//   margin-bottom: 30px;
-// `;
-
-// export const OccupationGroupLabel = styled.p`
-//   font-size: 14px;
-//   font-weight: normal;
-//   margin: 0;
-// `;
+export const Column = styled.div`
+  width: 37%;
+  margin: 0 0.5rem;
+`;
 
 export const VerticalLayout = styled.div`
-  display: inline-block;
   flex-direction: column;
-  align-items: center;
+  align-items: center;  
+  width: 26rem;
+  margin: 10px;
+  margin-top: 20px;
+  background-color: #8A612E;
+  color: #FFECCC;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: #432e15;
+  border-radius: 2px;
 `;
 

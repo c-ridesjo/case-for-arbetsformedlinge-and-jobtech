@@ -9,6 +9,7 @@ import { DigiButton } from "@digi/arbetsformedlingen-react";
 import axios from "axios";
 import { SearchResult } from "./SearchResult";
 import { OccupationData } from "../models/IOccupationData";
+import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 
 export const SearchResults = () => {
   const [searchParams] = useSearchParams();
@@ -66,18 +67,20 @@ export const SearchResults = () => {
             Tillbaka
           </DigiButton>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <DigiLayoutContainer>
+          <ColumnContainer>
             {data.map((occupation: OccupationData) => (
+              <Column key={occupation.id}>
               <SearchResult
-                key={occupation.id}
+       
                 title={occupation.occupation_label}
                 occupationGroupLabel={
                   occupation.occupation_group.occupation_group_label
                 }
                 link={`/selected-job/${occupation.id}`}
               />
+              </Column>
             ))}
-          </DigiLayoutContainer>
+          </ColumnContainer>
         </DigiLayoutContainer>
       </DigiTypography>
     </>
