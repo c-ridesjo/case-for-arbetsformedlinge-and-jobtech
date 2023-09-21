@@ -1,4 +1,3 @@
-
 import {
   FormInputType,
   FormInputValidation,
@@ -19,15 +18,7 @@ import {
 import { Form, Link } from "react-router-dom";
 import { FormEvent, useState, useContext } from "react";
 import FormDataContext from "../contexts/FormDataContext";
-   
-/*
-interface SearchFormProps {
-  onSubmit: (formData: { input_headline: string; input_text: string }) => void;
-}  */
-
-//export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
-
-
+  
 export const SearchForm = () => {
   const { formData, setFormData } = useContext(FormDataContext);
   const [educationTitle, setEducationTitle] = useState<string>("");
@@ -37,38 +28,27 @@ export const SearchForm = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
-    console.log('beskrivning:', formData.description);
-    console.log('titel:', formData.educationTitle);
-  
-
-    /*
-    onSubmit({
-      //input_headline: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
-      //input_text: typeof description === "number" ? description.toString() : description,
-      
-    }); */
-
-    setFormData({
+    const updatedFormData = {
+      ...formData,
       educationTitle,
       description,
-    })
-    
+    };
+
+    setFormData(updatedFormData)
+    console.log('Uppdaterad titel (ej i context):', updatedFormData.educationTitle);
+    console.log('titel i context:', formData.educationTitle);
   }
 
   return (
     <DigiTypographyMeta>
       <main>
-
         <Form onSubmit={handleSubmit}>
-
-
-
           <DigiFormInput
             afLabel="Utbildningstitel"
             afVariation={FormInputVariation.MEDIUM}
             afType={FormInputType.TEXT}
             afValidation={FormInputValidation.NEUTRAL}
-            onAfOnChange={(event) => setEducationTitle(event.target.value)}
+            onAfOnChange={(event) => setEducationTitle(event.target.value.toString())}
             afValue={educationTitle}
             afName="utbildningstitel"
           />
@@ -96,10 +76,7 @@ export const SearchForm = () => {
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
 
-
           </Link>
-
-          
         </Form>
       </main>
     </DigiTypographyMeta>
