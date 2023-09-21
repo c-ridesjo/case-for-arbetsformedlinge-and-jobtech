@@ -17,8 +17,8 @@ import {
 } from "@digi/arbetsformedlingen-react";
 
 import { Form, Link } from "react-router-dom";
-import { FormEvent, useState } from "react";
-//import FormDataContext from "../contexts/FormDataContext";
+import { FormEvent, useState, useContext } from "react";
+import FormDataContext from "../contexts/FormDataContext";
    
 /*
 interface SearchFormProps {
@@ -29,17 +29,18 @@ interface SearchFormProps {
 
 
 export const SearchForm = () => {
-  //const { setFormData } = useContext(FormDataContext);
-  const [educationTitle, setEducationTitle] = useState<string | number>("");
-  const [description, setDescription] = useState<string | number>("");
+  const { formData, setFormData } = useContext(FormDataContext);
+  const [educationTitle, setEducationTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
-    console.log('beskrivning:', description);
-    console.log('titel:', educationTitle);
-    
+    console.log('beskrivning:', formData.description);
+    console.log('titel:', formData.educationTitle);
+  
+
     /*
     onSubmit({
       //input_headline: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
@@ -47,7 +48,10 @@ export const SearchForm = () => {
       
     }); */
 
-    
+    setFormData({
+      educationTitle,
+      description,
+    })
     
   }
 

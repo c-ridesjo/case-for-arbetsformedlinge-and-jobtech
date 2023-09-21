@@ -6,13 +6,29 @@ import FormDataContext, { IFormDataContextType } from './contexts/FormDataContex
 import { useState } from 'react'
 function App() {
 
+  /*
   const [ formData, setFormData ] = useState<IFormDataContextType>({
     formData: {
       educationTitle: '',
       description: '',
     }, 
-    setFormData 
-  })
+    setFormData,
+  }) */
+
+  const defaultFormData = {
+    educationTitle: '',
+    description: '',
+  };
+
+  const [formData, setFormData] = useState<IFormDataContextType>({
+    formData: defaultFormData,
+    setFormData: (data) => {
+      setFormData((prevData) => ({
+        ...prevData,
+        ...data,
+      }));
+    },
+  });
 
 
   return (

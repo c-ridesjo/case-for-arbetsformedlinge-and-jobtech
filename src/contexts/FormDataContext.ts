@@ -3,7 +3,11 @@ import { IFormData } from "../models/IFormData";
 
 export interface IFormDataContextType {
   formData: IFormData;
-  setFormData: (text: string) => void;
+  setFormData: (
+    data: {
+      educationTitle: string,
+      description: string
+  }) => void;
 }
 
 const defaultFormData: IFormData = {
