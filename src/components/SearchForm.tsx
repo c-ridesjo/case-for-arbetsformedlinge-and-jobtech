@@ -19,12 +19,16 @@ import {
 import { Form, Link } from "react-router-dom";
 import { FormEvent, useState } from "react";
 //import FormDataContext from "../contexts/FormDataContext";
-        
+   
+/*
 interface SearchFormProps {
   onSubmit: (formData: { input_headline: string; input_text: string }) => void;
-}  
+}  */
 
-export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
+//export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
+
+
+export const SearchForm = () => {
   //const { setFormData } = useContext(FormDataContext);
   const [educationTitle, setEducationTitle] = useState<string | number>("");
   const [description, setDescription] = useState<string | number>("");
@@ -36,11 +40,12 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
     console.log('beskrivning:', description);
     console.log('titel:', educationTitle);
     
+    /*
     onSubmit({
-      input_headline: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
-      input_text: typeof description === "number" ? description.toString() : description,
+      //input_headline: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
+      //input_text: typeof description === "number" ? description.toString() : description,
       
-    }); 
+    }); */
 
     
     
