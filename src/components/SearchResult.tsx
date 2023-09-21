@@ -1,5 +1,5 @@
 import { SearchResultProps } from "../models/ISearchResult";
-import { DigiLink, DigiTypography } from "@digi/arbetsformedlingen-react";
+import { DigiLinkButton, DigiTypography } from "@digi/arbetsformedlingen-react";
 import {
   VerticalLayout,
 } from "./Styled/StyledSearchResult";
@@ -13,15 +13,13 @@ export const SearchResult = ({
       <VerticalLayout>
         <h2>{title}</h2>
         <p>{occupationGroupLabel}</p>        
-        <DigiLink
-          style={{ color: "#005B4A" }}
+        <DigiLinkButton
+
           af-href="#"
-          af-target="_blank"
-          af-variation="small"
-          afHref={""}
-        >
-          Läs mer här
-        </DigiLink>
+          af-size="medium"
+          af-variation="primary" afHref={""}        >
+         Läs mer här
+        </DigiLinkButton>
       </VerticalLayout>
     </DigiTypography>
   );

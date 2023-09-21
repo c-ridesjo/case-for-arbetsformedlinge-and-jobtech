@@ -80,9 +80,19 @@ form {
   color: #FFECCC;
 }
 
-.sc-digi-link-s>a {
+/* .sc-digi-link-s>a {
   color: #005B4A !important;
   margin-bottom: 3rem;
+} */
+
+.digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button {
+  background-color: #c2945e;
+  border: 1px solid #FFECCC;
+
+}
+
+.sc-digi-link-button-s>a {
+  color: #005B4A !important;
 }
 
 .digi-typography h1 {
@@ -100,12 +110,13 @@ div.sc-dmyDmy.aFaBd {
 }
 
 div.sc-beyTiQ.udJhQ {
-  border: 1px solid black;
   width: 30rem;
   margin: 10px;
   margin-top: 20px;
   background-color: #8A612E;
   color: #FFECCC;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .sc-digi-layout-container-h .digi-layout-container.sc-digi-layout-container {
