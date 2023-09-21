@@ -6,6 +6,8 @@ export interface IFormDataContextType {
   setFormData: Dispatch<SetStateAction<IFormData>>;
 }
 
-const FormDataContext = createContext<IFormDataContextType | undefined>(undefined);
+const FormDataContext = createContext<IFormDataContextType | undefined>(
+  undefined
+);
 
 export default FormDataContext;
