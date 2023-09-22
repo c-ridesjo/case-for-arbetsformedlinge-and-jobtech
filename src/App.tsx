@@ -1,44 +1,28 @@
-import './style/App.css'
-import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css'
-import { RouterProvider } from 'react-router-dom'
-import { router } from './Router'
-import FormDataContext, { IFormDataContextType } from './contexts/FormDataContext'
-import { useState } from 'react'
+import { useMemo, useContext } from "react";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Router";
+import FormDataContext from "./contexts/FormDataContext";
+
 function App() {
+  const {formData, setFormData} = useContext(FormDataContext);
 
-  /*
-  const [ formData, setFormData ] = useState<IFormDataContextType>({
-    formData: {
-      educationTitle: '',
-      description: '',
-    }, 
-    setFormData,
-  }) */
+  const updateFormData = () => {
+    setFormData({
+      educationTitle: 'New Title',
+      description: 'New Description',
+    });
+  }
 
-  const defaultFormData = {
-    educationTitle: '',
-    description: '',
-  };
-
-  const [formData, setFormData] = useState<IFormDataContextType>({
-    formData: defaultFormData,
-    setFormData: (data) => {
-      setFormData((prevData) => ({
-        ...prevData,
-        ...data,
-      }));
-    },
-  });
-
+  const contextValue = useMemo(() => ({
+    formData,
+    setFormData: updateFormData,
+  }), [formData]);
 
   return (
-    <>
-    <FormDataContext.Provider value={formData}>
+    <FormDataContext.Provider value={contextValue}>
       <RouterProvider router={router}></RouterProvider>
     </FormDataContext.Provider>
-      
-    </> 
   )
 }
 
-export default App
+export default App;
