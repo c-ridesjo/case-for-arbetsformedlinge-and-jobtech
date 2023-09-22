@@ -1,11 +1,23 @@
-import { createContext, Dispatch, SetStateAction } from "react";
+import { createContext } from "react";
 import { IFormData } from "../models/IFormData";
 
 export interface IFormDataContextType {
   formData: IFormData;
-  setFormData: Dispatch<SetStateAction<IFormData>>;
+  setFormData: (
+    data: {
+      educationTitle: string,
+      description: string
+  }) => void;
 }
 
-const FormDataContext = createContext<IFormDataContextType | undefined>(undefined);
+const defaultFormData: IFormData = {
+  educationTitle: '',
+  description: '',
+};
+
+const FormDataContext = createContext<IFormDataContextType>({
+  formData: defaultFormData,
+  setFormData: () => {},
+});
 
 export default FormDataContext;

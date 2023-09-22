@@ -1,4 +1,3 @@
-
 import {
   FormInputType,
   FormInputValidation,
@@ -17,50 +16,39 @@ import {
 } from "@digi/arbetsformedlingen-react";
 
 import { Form, Link } from "react-router-dom";
-import { FormEvent, useState } from "react";
-//import FormDataContext from "../contexts/FormDataContext";
-        
-interface SearchFormProps {
-  onSubmit: (formData: { input_headline: string; input_text: string }) => void;
-}  
-
-export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
-  //const { formData, setFormData } = useContext(FormDataContext);
-  const [educationTitle, setEducationTitle] = useState<string | number>("");
-  const [description, setDescription] = useState<string | number>("");
+import { FormEvent, useState, useContext } from "react";
+import FormDataContext from "../contexts/FormDataContext";
+  
+export const SearchForm = () => {
+  const { formData, setFormData } = useContext(FormDataContext);
+  const [educationTitle, setEducationTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
-    console.log(description);
-    
-
-    onSubmit({
-      input_headline: typeof educationTitle === "number" ? educationTitle.toString() : educationTitle,
-      input_text: typeof description === "number" ? description.toString() : description,
-      
-    });
-
-    /*
-    setFormData(prevData => ({
-      ...prevData,
+    const updatedFormData = {
+      ...formData,
       educationTitle,
-      description
-    })) */
+      description,
+    };
+
+    setFormData(updatedFormData)
+    console.log('Uppdaterad titel (ej i context):', updatedFormData.educationTitle);
+    console.log('titel i context:', formData.educationTitle);
   }
 
   return (
     <DigiTypographyMeta>
       <main>
-
         <Form onSubmit={handleSubmit}>
           <DigiFormInput
             afLabel="Utbildningstitel"
             afVariation={FormInputVariation.MEDIUM}
             afType={FormInputType.TEXT}
             afValidation={FormInputValidation.NEUTRAL}
-            onAfOnChange={(event) => setEducationTitle(event.target.value)}
+            onAfOnChange={(event) => setEducationTitle(event.target.value.toString())}
             afValue={educationTitle}
             afName="utbildningstitel"
           />
@@ -69,11 +57,10 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
             afLabel="Beskrivning"
             afVariation={FormTextareaVariation.MEDIUM}
             afValidation={FormTextareaValidation.NEUTRAL}
-            afName="beskrivning"
-            afValue={description as string}
             onAfOnChange={(event) => setDescription(event.target.value)}
+            afValue={description as string}
+            afName="beskrivning"
           ></DigiFormTextarea>
-          
 
             <DigiButton
               afSize={ButtonSize.LARGE}
@@ -89,10 +76,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
             to={`/search-results?educationTitle=${educationTitle}&description=${description}`}
           >
 
-
           </Link>
-
-          
         </Form>
       </main>
     </DigiTypographyMeta>
