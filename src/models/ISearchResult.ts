@@ -1,5 +1,5 @@
 export interface SearchResultProps {
-    title: string;
-    description: string;
-    link: string;
-  } 
+  title: string;
+  occupationGroupLabel: string;
+  link: string;
+}

@@ -63,6 +63,61 @@ form {
   width: 20rem;
 }
 
+.sc-digi-button-h .digi-button--size-medium.sc-digi-button {
+  background-color: #c2945e;
+  color: #432e15;
+  padding: 0.2rem;
+  border: 2px solid black;
+  width: 7rem;
+  font-size: 1.25rem;
+  display: block;
+  box-shadow: 0 4px 4px 0 #432E15;
+}
+
+.sc-digi-button-h .digi-button--size-medium.sc-digi-button:hover {
+  background-color: #8A612E;
+  color: #FFECCC;
+}
+
+/* .sc-digi-link-s>a {
+  color: #005B4A !important;
+  margin-bottom: 3rem;
+} */
+
+.digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button {
+  background-color: #005B4A ;
+  border: 1px solid #FFECCC;
+  color: #FFECCC !important;
+  box-shadow: 0 4px 4px 0 #432E15;
+}
+
+.digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button:hover {
+  background-color: #004135 ;
+  color: #FFECCC !important;
+}
+
+.sc-digi-link-button-s>a {
+  color: #005B4A !important;
+}
+
+.digi-typography h1 {
+  margin-left: 0px;
+  font-weight: 100;
+}
+
+.digi-typography h2 {
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+
+div.sc-dmyDmy.aFaBd {
+  width: 30rem;
+}
+
+/* .sc-digi-layout-container-h .digi-layout-container.sc-digi-layout-container {
+  background-color: #FFECCC;
+} */
+
 footer {
   background-color: #005b4a;
   padding: 1rem;

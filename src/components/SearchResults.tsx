@@ -9,23 +9,18 @@ import { DigiButton } from "@digi/arbetsformedlingen-react";
 import axios from "axios";
 import { SearchResult } from "./SearchResult";
 import { OccupationData } from "../models/IOccupationData";
-import {
-  StyledP,
-  StyledH1,
-  Column,
-  ColumnContainer,
-} from "../components/Styled/StyledSearchResult";
+import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 
 export const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const educationTitle = searchParams.get("educationTitle") || "";
-  const description = searchParams.get("description") || "";
 
   const [data, setData] = useState<OccupationData[]>([]);
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  const fetchOccupationsByText = async () => {    // (text: string) sedan när jag inte hårdkodar
+  const fetchOccupationsByText = async () => {
+    // (text: string) sedan när jag inte hårdkodar
     setError(null);
     try {
       const response = await axios.post(
@@ -60,27 +55,32 @@ export const SearchResults = () => {
   return (
     <>
       <DigiTypography af-variation="large">
-        <DigiLayoutContainer style={{ padding: "0" }}>
-          <DigiButton onClick={() => navigate("/")}>Home</DigiButton>
-          <ColumnContainer>
-            <Column>
-              <StyledH1>Titel</StyledH1>
-            </Column>
-            <Column>
-              <StyledP>Beskrivning {description}</StyledP>
-            </Column>
-          </ColumnContainer>
+        <DigiLayoutContainer
+          style={{ padding: "0", backgroundColor: "#FFECCC" }}
+        >
+          <DigiButton
+            af-size="medium"
+            af-variation="primary"
+            af-full-width="false"
+            onClick={() => navigate("/")}
+          >
+            Tillbaka
+          </DigiButton>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <DigiLayoutContainer>
+          <ColumnContainer>
             {data.map((occupation: OccupationData) => (
+              <Column key={occupation.id}>
               <SearchResult
-                key={occupation.id}
+       
                 title={occupation.occupation_label}
-                description={occupation.description} // ?
+                occupationGroupLabel={
+                  occupation.occupation_group.occupation_group_label
+                }
                 link={`/selected-job/${occupation.id}`}
               />
+              </Column>
             ))}
-          </DigiLayoutContainer>
+          </ColumnContainer>
         </DigiLayoutContainer>
       </DigiTypography>
     </>
