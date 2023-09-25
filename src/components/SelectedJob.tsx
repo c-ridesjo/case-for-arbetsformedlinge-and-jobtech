@@ -6,6 +6,12 @@ import {
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
+import { StyledH1 } from "./Styled/StyledSearchResult";
+import styled from "styled-components";
+
+const StyledBox = styled.div`
+  border: 1px solid black;
+`;
 
 export const SelectedJob = () => {
   const { occupationId } = useParams();
@@ -23,15 +29,14 @@ export const SelectedJob = () => {
     <>
       <DigiTypography>
         <DigiLayoutContainer style={{ padding: "0" }}>
-          <h3>{occupationDetails?.occupation_label}</h3>
-          <p>ID: {occupationDetails?.id}</p>
-          <p>Concept taxonomy ID: {occupationDetails?.concept_taxonomy_id}</p>
-          <p>
-            Legacy AMS taxonomy ID: {occupationDetails?.legacy_ams_taxonomy_id}
-          </p>
-          <p>{occupationDetails?.occupation_group.occupation_group_label}</p>
-          <p>{occupationDetails?.occupation_group.concept_taxonomy_id}</p>
-          <p>{occupationDetails?.occupation_group.ssyk}</p>
+          <StyledH1>{occupationDetails?.occupation_label}</StyledH1>
+          <StyledBox>
+            <p>ID: {occupationDetails?.id}</p>
+            <p>
+              Beskrivning:{" "}
+              {occupationDetails?.occupation_group.occupation_group_label}
+            </p>
+          </StyledBox>
         </DigiLayoutContainer>
       </DigiTypography>
     </>
