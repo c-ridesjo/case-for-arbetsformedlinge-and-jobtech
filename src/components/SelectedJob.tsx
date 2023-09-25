@@ -6,11 +6,17 @@ import {
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
-import { StyledH1 } from "./Styled/StyledSearchResult";
 import styled from "styled-components";
 
 const StyledBox = styled.div`
   border: 1px solid black;
+  text-align: center;
+  color: #ffeccc;
+  padding: 50px;
+  width: fit-content;
+  margin: 50px auto 0;
+  border-radius: 6px;
+  background-color: #005b4a;
 `;
 
 export const SelectedJob = () => {
@@ -29,7 +35,7 @@ export const SelectedJob = () => {
     <>
       <DigiTypography>
         <DigiLayoutContainer style={{ padding: "0" }}>
-          <StyledH1>{occupationDetails?.occupation_label}</StyledH1>
+          <h1>{occupationDetails?.occupation_label}</h1>
           <StyledBox>
             <p>ID: {occupationDetails?.id}</p>
             <p>
