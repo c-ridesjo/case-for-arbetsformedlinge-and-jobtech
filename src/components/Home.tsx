@@ -1,26 +1,30 @@
 import { DigiTypographyMeta } from '@digi/arbetsformedlingen-react'
 import { SearchForm } from './SearchForm'
-import FormDataContext from "../contexts/FormDataContext";
-import { useContext } from 'react';
+import { SearchResults } from './SearchResults'
+import { matchByText } from '../services/serviceBase'
+import { useState } from 'react'
 
 export const Home = () => {
+    const [responseData, setResponseData] = useState({});
 
-    const { formData } = useContext(FormDataContext);
-
-    console.log('formdata home', formData);
-    
-      const handleSearchSubmit = async () => {
-        console.log('formdata submit', formData);
-        
-      } 
+    const handleFormSubmit =  async (formData: { educationTitle: string; description: string }) => {
+        console.log('data', formData)
+        try {
+            const dataFromResponse = await matchByText(formData.educationTitle, formData.description)
+            setResponseData(dataFromResponse)
+        } catch (error) {
+            console.error('error', error)
+        }
+    }
 
     return (
         <>
             <DigiTypographyMeta>
                 <h2>Hem</h2>
                 <div className='form-container'>
-                <SearchForm onSubmit={handleSearchSubmit}></SearchForm>
+                <SearchForm onSubmit={handleFormSubmit}></SearchForm>
                 </div>
+                <SearchResults responseData={responseData}></SearchResults>
             </DigiTypographyMeta>
         </>
     )
