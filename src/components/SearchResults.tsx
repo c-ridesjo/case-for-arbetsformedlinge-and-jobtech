@@ -20,7 +20,6 @@ export const SearchResults = () => {
   const [error, setError] = useState<string | null>(null);
 
   const fetchOccupationsByText = async () => {
-    // (text: string) sedan när jag inte hårdkodar
     setError(null);
     try {
       const response = await axios.post(
@@ -70,14 +69,14 @@ export const SearchResults = () => {
           <ColumnContainer>
             {data.map((occupation: OccupationData) => (
               <Column key={occupation.id}>
-              <SearchResult
-       
-                title={occupation.occupation_label}
-                occupationGroupLabel={
-                  occupation.occupation_group.occupation_group_label
-                }
-                link={`/selected-job/${occupation.id}`}
-              />
+                <SearchResult
+                  title={occupation.occupation_label}
+                  occupationGroupLabel={
+                    occupation.occupation_group.occupation_group_label
+                  }
+                  occupationId={occupation.id}
+                  link={`/selected-job/${occupation.id}`}
+                />
               </Column>
             ))}
           </ColumnContainer>
