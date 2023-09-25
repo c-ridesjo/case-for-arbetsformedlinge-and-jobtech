@@ -17,16 +17,19 @@ import {
 
 import { Form } from "react-router-dom";
 import { FormEvent, useState } from "react";
-import { SearchResults } from "./SearchResults";
+
+interface SearchFormProps {
+  onSubmit: (formData: { educationTitle: string; description: string }) => void;
+}
   
-export const SearchForm = () => {
+export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   const [educationTitle, setEducationTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    
+    onSubmit({ educationTitle, description });
   }
 
   return (
@@ -61,8 +64,6 @@ export const SearchForm = () => {
             </DigiButton>          
 
         </Form>
-
-        <SearchResults></SearchResults>
     </DigiTypographyMeta>
   );
 };
