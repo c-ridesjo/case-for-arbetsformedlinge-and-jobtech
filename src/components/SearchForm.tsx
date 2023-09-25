@@ -35,6 +35,15 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   return (
     <DigiTypographyMeta>
         <Form onSubmit={handleSubmit}>
+          <DigiFormTextarea
+            afLabel="Beskrivning"
+            afVariation={FormTextareaVariation.MEDIUM}
+            afValidation={FormTextareaValidation.NEUTRAL}
+            onAfOnChange={(event) => setDescription(event.target.value)}
+            afValue={description as string}
+            afName="beskrivning"
+          ></DigiFormTextarea>     
+
           <DigiFormInput
             afLabel="Utbildningstitel"
             afVariation={FormInputVariation.MEDIUM}
@@ -45,14 +54,6 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
             afName="utbildningstitel"
           />
 
-          <DigiFormTextarea
-            afLabel="Beskrivning"
-            afVariation={FormTextareaVariation.MEDIUM}
-            afValidation={FormTextareaValidation.NEUTRAL}
-            onAfOnChange={(event) => setDescription(event.target.value)}
-            afValue={description as string}
-            afName="beskrivning"
-          ></DigiFormTextarea>
 
             <DigiButton
               afSize={ButtonSize.LARGE}

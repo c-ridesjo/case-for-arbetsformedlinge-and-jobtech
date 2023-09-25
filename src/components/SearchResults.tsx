@@ -6,12 +6,16 @@ import {
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { DigiButton } from "@digi/arbetsformedlingen-react";
-import axios from "axios";
 import { SearchResult } from "./SearchResult";
 import { OccupationData } from "../models/IOccupationData";
 import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
+import { IResponseData } from "../models/IResponseData";
 
-export const SearchResults = () => {
+interface SearchResultsProps {
+  responseData: IResponseData; 
+}
+
+export const SearchResults = ({ responseData }: SearchResultsProps) => {
   const [searchParams] = useSearchParams();
   const educationTitle = searchParams.get("educationTitle") || "";
 
@@ -19,10 +23,16 @@ export const SearchResults = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
+  console.log('respons', responseData);
+  
+  // VIKTIGT! Koden fram till return ska rensas bort och ersättas 
+  // Vi vill använda oss av responseData istället
+  
   const fetchOccupationsByText = async () => {
     // (text: string) sedan när jag inte hårdkodar
     setError(null);
     try {
+      /*
       const response = await axios.post(
         "https://jobed-connect-api.jobtechdev.se/v1/occupations/match-by-text",
         {
@@ -34,7 +44,7 @@ export const SearchResults = () => {
         }
       );
 
-      setData(response.data.related_occupations);
+      setData(response.data.related_occupations); */
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error("Error fetching data:", error.message);
@@ -50,7 +60,7 @@ export const SearchResults = () => {
   useEffect(() => {
     console.log("educationTitle value:", educationTitle);
     fetchOccupationsByText();
-  }, [educationTitle]);
+  }, [educationTitle]); 
 
   return (
     <>
