@@ -2,18 +2,24 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { getEnrichedOccupations } from "../services/serviceBase";
 import { IOccupationDetails } from "../models/IOccupationDetails";
+import { useEffect } from "react";
 
 export const SelectedJob = () => {
-  const { occupationId } = useParams();
+  const { occupationId: paramOccupationId } = useParams();
   const [occupationDetails, setOccupationDetails] = useState<
     IOccupationDetails | undefined
   >(undefined);
 
-  if (occupationDetails === undefined && occupationId !== undefined) {
-    getEnrichedOccupations(occupationId).then((response) => {
-      setOccupationDetails(response);
-    });
-  }
+  useEffect(() => {
+    const occupationId =
+      paramOccupationId || localStorage.getItem("selectedOccupationId");
+
+    if (occupationId && !occupationDetails) {
+      getEnrichedOccupations(occupationId).then((response) => {
+        setOccupationDetails(response);
+      });
+    }
+  }, [occupationDetails, paramOccupationId]);
 
   return (
     <>
