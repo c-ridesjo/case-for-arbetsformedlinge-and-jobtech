@@ -33,6 +33,7 @@ export const SearchResults = () => {
         }
       );
 
+      console.log('API Response: ', response.data);
       setData(response.data.related_occupations);
     } catch (error: unknown) {
       if (error instanceof Error) {

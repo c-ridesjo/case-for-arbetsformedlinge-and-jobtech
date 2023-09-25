@@ -1,25 +1,17 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { getEnrichedOccupations } from "../services/serviceBase";
-import { IOccupationDetails } from "../models/IOccupationDetails";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { IOccupationDetails } from "../models/IOccupationDetails";
 
 export const SelectedJob = () => {
-  const { occupationId: paramOccupationId } = useParams();
-  const [occupationDetails, setOccupationDetails] = useState<
-    IOccupationDetails | undefined
-  >(undefined);
+  const location = useLocation();
+const occupationDetails: IOccupationDetails = location.state as IOccupationDetails;
+
 
   useEffect(() => {
-    const occupationId =
-      paramOccupationId || localStorage.getItem("selectedOccupationId");
-
-    if (occupationId && !occupationDetails) {
-      getEnrichedOccupations(occupationId).then((response) => {
-        setOccupationDetails(response);
-      });
-    }
-  }, [occupationDetails, paramOccupationId]);
+    console.log('Current Path: ', window.location.pathname);
+    console.log('SelectedJob Component Rendered!');
+    console.log('occupationDetails: ', occupationDetails);
+  }, [occupationDetails]);
 
   return (
     <>
@@ -30,6 +22,12 @@ export const SelectedJob = () => {
       <p>{occupationDetails?.occupation_group.occupation_group_label}</p>
       <p>{occupationDetails?.occupation_group.concept_taxonomy_id}</p>
       <p>{occupationDetails?.occupation_group.ssyk}</p>
+      
+      <ul>
+        {occupationDetails?.metadata?.enriched_candidates_term_frequency.competencies.map((competency, index) => (
+          <li key={index}>{competency.term}</li>
+        ))}
+      </ul>
     </>
   );
 };
