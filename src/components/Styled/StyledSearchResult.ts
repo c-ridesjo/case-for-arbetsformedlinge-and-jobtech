@@ -2,22 +2,27 @@ import styled from "styled-components";
 
 export const ColumnContainer = styled.div`
   display: flex;
-  justify-content: start;
-  align-items: left;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   margin-top: 2rem;
 `;
 
 export const Column = styled.div`
-  width: 27rem;
-  margin: 0 1rem;
+  width: 37%;
+  margin: 0 0.5rem;
 `;
 
-export const StyledP = styled.h1`
-  margin: 0;
-  color: #c2945e;
-`;
-
-export const StyledH1 = styled.h1`
-  margin: 0;
-  color: #c2945e;
+export const VerticalLayout = styled.div`
+  flex-direction: column;
+  align-items: center;
+  width: 26rem;
+  margin: 10px;
+  margin-top: 20px;
+  background-color: #8a612e;
+  color: #ffeccc;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: #432e15;
+  border-radius: 2px;
 `;

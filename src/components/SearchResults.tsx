@@ -6,28 +6,33 @@ import {
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { DigiButton } from "@digi/arbetsformedlingen-react";
-import axios from "axios";
 import { SearchResult } from "./SearchResult";
 import { OccupationData } from "../models/IOccupationData";
-import {
-  StyledP,
-  StyledH1,
-  Column,
-  ColumnContainer,
-} from "../components/Styled/StyledSearchResult";
+import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
+import { IResponseData } from "../models/IResponseData";
 
-export const SearchResults = () => {
+interface SearchResultsProps {
+  responseData: IResponseData;
+}
+
+export const SearchResults = ({ responseData }: SearchResultsProps) => {
   const [searchParams] = useSearchParams();
   const educationTitle = searchParams.get("educationTitle") || "";
-  const description = searchParams.get("description") || "";
 
   const [data, setData] = useState<OccupationData[]>([]);
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  const fetchOccupationsByText = async () => {    // (text: string) sedan när jag inte hårdkodar
+  console.log("respons", responseData);
+
+  // VIKTIGT! Koden fram till return ska rensas bort och ersättas
+  // Vi vill använda oss av responseData istället
+
+  const fetchOccupationsByText = async () => {
+    // (text: string) sedan när jag inte hårdkodar
     setError(null);
     try {
+      /*
       const response = await axios.post(
         "https://jobed-connect-api.jobtechdev.se/v1/occupations/match-by-text",
         {
@@ -39,7 +44,7 @@ export const SearchResults = () => {
         }
       );
 
-      setData(response.data.related_occupations);
+      setData(response.data.related_occupations); */
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error("Error fetching data:", error.message);
@@ -60,27 +65,31 @@ export const SearchResults = () => {
   return (
     <>
       <DigiTypography af-variation="large">
-        <DigiLayoutContainer style={{ padding: "0" }}>
-          <DigiButton onClick={() => navigate("/")}>Home</DigiButton>
-          <ColumnContainer>
-            <Column>
-              <StyledH1>Titel</StyledH1>
-            </Column>
-            <Column>
-              <StyledP>Beskrivning {description}</StyledP>
-            </Column>
-          </ColumnContainer>
+        <DigiLayoutContainer
+          style={{ padding: "0", backgroundColor: "#FFECCC" }}
+        >
+          <DigiButton
+            af-size="medium"
+            af-variation="primary"
+            af-full-width="false"
+            onClick={() => navigate("/")}
+          >
+            Tillbaka
+          </DigiButton>
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <DigiLayoutContainer>
+          <ColumnContainer>
             {data.map((occupation: OccupationData) => (
-              <SearchResult
-                key={occupation.id}
-                title={occupation.occupation_label}
-                description={occupation.description} // ?
-                link={`/selected-job/${occupation.id}`}
-              />
+              <Column key={occupation.id}>
+                <SearchResult
+                  title={occupation.occupation_label}
+                  occupationGroupLabel={
+                    occupation.occupation_group.occupation_group_label
+                  }
+                  link={`/selected-job/${occupation.id}`}
+                />
+              </Column>
             ))}
-          </DigiLayoutContainer>
+          </ColumnContainer>
         </DigiLayoutContainer>
       </DigiTypography>
     </>
