@@ -19,7 +19,7 @@ export const VerticalLayout = styled.div`
   width: 26rem;
   margin: 10px;
   margin-top: 20px;
-  background-color: #8a612e;
+  background-color: #487465;
   color: #ffeccc;
   padding-top: 10px;
   padding-bottom: 10px;

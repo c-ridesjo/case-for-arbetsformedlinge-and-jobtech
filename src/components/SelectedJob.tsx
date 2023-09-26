@@ -18,7 +18,7 @@ const StyledBox = styled.div`
   width: fit-content;
   margin: 50px auto 0;
   border-radius: 6px;
-  background-color: #005b4a;
+  background-color: #487465;
 `;
 
 const StyledH1 = styled.h1`
@@ -27,8 +27,9 @@ const StyledH1 = styled.h1`
   margin: 50px auto 0;
   font-size: 2rem;
   font-weight: 700;
+  @media (prefers-color-scheme: light) {
+    color: #432E15;
 `;
-
 
 export const SelectedJob = () => {
   const { occupationId: paramOccupationId } = useParams();
@@ -58,31 +59,28 @@ export const SelectedJob = () => {
 
   return (
     <>
-
       <DigiTypography>
         <DigiLayoutContainer style={{ padding: "0" }}>
-           <StyledH1>
+          <StyledH1>
             <h1>{occupationDetails?.occupation_label}</h1>
           </StyledH1>
-          
-          <StyledBox>
-      {occupationDetails?.metadata?.enriched_candidates_term_frequency
-        ?.competencies &&
-      occupationDetails.metadata.enriched_candidates_term_frequency.competencies
-        .length > 0 ? (
-        occupationDetails.metadata.enriched_candidates_term_frequency.competencies.map(
-          (competency, index) => (
-            <p key={index}>Competency: {competency.term}</p>
-          )
-        )
-      ) : (
-        <p>No Competencies Found</p>
-      )}
 
+          <StyledBox>
+            {occupationDetails?.metadata?.enriched_candidates_term_frequency
+              ?.competencies &&
+            occupationDetails.metadata.enriched_candidates_term_frequency
+              .competencies.length > 0 ? (
+              occupationDetails.metadata.enriched_candidates_term_frequency.competencies.map(
+                (competency, index) => (
+                  <p key={index}>Competency: {competency.term}</p>
+                )
+              )
+            ) : (
+              <p>No Competencies Found</p>
+            )}
           </StyledBox>
         </DigiLayoutContainer>
       </DigiTypography>
-
     </>
   );
 };
