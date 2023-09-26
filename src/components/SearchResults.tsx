@@ -12,7 +12,7 @@ import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 import { IResponseData } from "../models/IResponseData";
 
 interface SearchResultsProps {
-  responseData: IResponseData; 
+  responseData: IResponseData;
 }
 
 export const SearchResults = ({ responseData }: SearchResultsProps) => {
@@ -23,11 +23,11 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  console.log('respons', responseData);
-  
-  // VIKTIGT! Koden fram till return ska rensas bort och ersättas 
+  console.log("respons", responseData);
+
+  // VIKTIGT! Koden fram till return ska rensas bort och ersättas
   // Vi vill använda oss av responseData istället
-  
+
   const fetchOccupationsByText = async () => {
     // (text: string) sedan när jag inte hårdkodar
     setError(null);
@@ -60,7 +60,7 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
   useEffect(() => {
     console.log("educationTitle value:", educationTitle);
     fetchOccupationsByText();
-  }, [educationTitle]); 
+  }, [educationTitle]);
 
   return (
     <>
@@ -80,14 +80,13 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
           <ColumnContainer>
             {data.map((occupation: OccupationData) => (
               <Column key={occupation.id}>
-              <SearchResult
-       
-                title={occupation.occupation_label}
-                occupationGroupLabel={
-                  occupation.occupation_group.occupation_group_label
-                }
-                link={`/selected-job/${occupation.id}`}
-              />
+                <SearchResult
+                  title={occupation.occupation_label}
+                  occupationGroupLabel={
+                    occupation.occupation_group.occupation_group_label
+                  }
+                  link={`/selected-job/${occupation.id}`}
+                />
               </Column>
             ))}
           </ColumnContainer>

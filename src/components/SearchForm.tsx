@@ -21,50 +21,49 @@ import { FormEvent, useState } from "react";
 interface SearchFormProps {
   onSubmit: (formData: { educationTitle: string; description: string }) => void;
 }
-  
+
 export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
   const [educationTitle, setEducationTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit({ educationTitle, description });
-  }
+  };
 
   return (
     <DigiTypographyMeta>
-        <Form onSubmit={handleSubmit}>
-          <DigiFormTextarea
-            afLabel="Beskrivning"
-            afVariation={FormTextareaVariation.MEDIUM}
-            afValidation={FormTextareaValidation.NEUTRAL}
-            onAfOnChange={(event) => setDescription(event.target.value)}
-            afValue={description as string}
-            afName="beskrivning"
-          ></DigiFormTextarea>     
+      <Form onSubmit={handleSubmit}>
+        <DigiFormTextarea
+          afLabel="Beskrivning"
+          afVariation={FormTextareaVariation.MEDIUM}
+          afValidation={FormTextareaValidation.NEUTRAL}
+          onAfOnChange={(event) => setDescription(event.target.value)}
+          afValue={description as string}
+          afName="beskrivning"
+        ></DigiFormTextarea>
 
-          <DigiFormInput
-            afLabel="Utbildningstitel"
-            afVariation={FormInputVariation.MEDIUM}
-            afType={FormInputType.TEXT}
-            afValidation={FormInputValidation.NEUTRAL}
-            onAfOnChange={(event) => setEducationTitle(event.target.value.toString())}
-            afValue={educationTitle}
-            afName="utbildningstitel"
-          />
+        <DigiFormInput
+          afLabel="Utbildningstitel"
+          afVariation={FormInputVariation.MEDIUM}
+          afType={FormInputType.TEXT}
+          afValidation={FormInputValidation.NEUTRAL}
+          onAfOnChange={(event) =>
+            setEducationTitle(event.target.value.toString())
+          }
+          afValue={educationTitle}
+          afName="utbildningstitel"
+        />
 
-
-            <DigiButton
-              afSize={ButtonSize.LARGE}
-              afVariation={ButtonVariation.PRIMARY}
-              afType={ButtonType.SUBMIT}
-              afFullWidth={true}
-            >
-              Sök yrken
-            </DigiButton>          
-
-        </Form>
+        <DigiButton
+          afSize={ButtonSize.LARGE}
+          afVariation={ButtonVariation.PRIMARY}
+          afType={ButtonType.SUBMIT}
+          afFullWidth={true}
+        >
+          Sök yrken
+        </DigiButton>
+      </Form>
     </DigiTypographyMeta>
   );
 };

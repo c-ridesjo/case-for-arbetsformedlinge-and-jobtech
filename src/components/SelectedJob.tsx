@@ -2,6 +2,30 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { getEnrichedOccupations } from "../services/serviceBase";
 import { IOccupationDetails } from "../models/IOccupationDetails";
+import {
+  DigiLayoutContainer,
+  DigiTypography,
+} from "@digi/arbetsformedlingen-react";
+import styled from "styled-components";
+
+const StyledBox = styled.div`
+  border: 1px solid black;
+  text-align: center;
+  color: #ffeccc;
+  padding: 50px;
+  width: fit-content;
+  margin: 50px auto 0;
+  border-radius: 6px;
+  background-color: #005b4a;
+`;
+
+const StyledH1 = styled.h1`
+  color: #ffeccc;
+  text-align: center;
+  margin: 50px auto 0;
+  font-size: 2rem;
+  font-weight: 700;
+`;
 
 export const SelectedJob = () => {
   const { occupationId } = useParams();
@@ -17,13 +41,20 @@ export const SelectedJob = () => {
 
   return (
     <>
-      <h3>{occupationDetails?.occupation_label}</h3>
-      <p>ID: {occupationDetails?.id}</p>
-      <p>Concept taxonomy ID: {occupationDetails?.concept_taxonomy_id}</p>
-      <p>Legacy AMS taxonomy ID: {occupationDetails?.legacy_ams_taxonomy_id}</p>
-      <p>{occupationDetails?.occupation_group.occupation_group_label}</p>
-      <p>{occupationDetails?.occupation_group.concept_taxonomy_id}</p>
-      <p>{occupationDetails?.occupation_group.ssyk}</p>
+      <DigiTypography>
+        <DigiLayoutContainer style={{ padding: "0" }}>
+          <StyledH1>
+            <h1>{occupationDetails?.occupation_label}</h1>
+          </StyledH1>
+          <StyledBox>
+            {/* <p>ID: {occupationDetails?.id}</p> Vill vi visa ID? */}
+            <p>
+              Beskrivning:{" "}
+              {occupationDetails?.occupation_group.occupation_group_label}
+            </p>
+          </StyledBox>
+        </DigiLayoutContainer>
+      </DigiTypography>
     </>
   );
 };
