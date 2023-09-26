@@ -26,7 +26,6 @@ export const Home = () => {
   return (
     <>
       <DigiTypographyMeta>
-        <h2>Hem</h2>
         <div className="form-container">
           <SearchForm onSubmit={handleFormSubmit}></SearchForm>
         </div>
