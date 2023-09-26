@@ -1,9 +1,7 @@
 import {
-  DigiButton,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
-import { useNavigate } from "react-router-dom";
 import { IOccupationDetails } from "../models/IOccupationDetails";
 import { IResponseData } from "../models/IResponseData";
 import { SearchResult } from "./SearchResult";
@@ -14,7 +12,7 @@ interface SearchResultsProps {
 }
 
 export const SearchResults = ({ responseData }: SearchResultsProps) => {
-  const navigate = useNavigate();
+  
 
   if (responseData === undefined) {
     return null;
@@ -26,14 +24,7 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
         <DigiLayoutContainer
           style={{ padding: "0", backgroundColor: "#FFECCC" }}
         >
-          <DigiButton
-            af-size="medium"
-            af-variation="primary"
-            af-full-width="false"
-            onClick={() => navigate("/")}
-          >
-            Tillbaka
-          </DigiButton>
+
           <ColumnContainer>
 
             {responseData.related_occupations?.map(
