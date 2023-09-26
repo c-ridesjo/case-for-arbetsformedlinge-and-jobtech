@@ -19,7 +19,7 @@ const StyledBox = styled.div`
   width: fit-content;
   margin: 50px auto 0;
   border-radius: 6px;
-  background-color: #005b4a;
+  background-color: #487465;
 `;
 
 const StyledH2 = styled.h2`
@@ -28,6 +28,8 @@ const StyledH2 = styled.h2`
   margin: 50px auto 0;
   font-size: 2rem;
   font-weight: 700;
+  @media (prefers-color-scheme: light) {
+    color: #432E15;
 `;
 
 export const SelectedJob = () => {
