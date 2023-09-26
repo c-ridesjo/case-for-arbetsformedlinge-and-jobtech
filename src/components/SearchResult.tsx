@@ -23,7 +23,7 @@ export const SearchResult = ({
         <DigiLinkButton
           onClick={handleClick}
           af-size="medium"
-          af-variation="primary"
+          af-variation="secondary"
           afHref={""}
         >
           Läs mer här
