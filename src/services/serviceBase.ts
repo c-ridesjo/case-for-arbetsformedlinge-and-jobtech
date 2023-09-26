@@ -20,5 +20,5 @@ export const matchByText = async (input_text: string, input_headline: string) =>
 export const getEnrichedOccupations = async (
   occupationId: string
 ): Promise<IOccupationDetails> => {
-  return get(`/v1/enriched_occupations?occupation_id=${occupationId}`);
+  return get(`/v1/enriched_occupations?occupation_id=${occupationId}&include_metadata=True`);
 };
