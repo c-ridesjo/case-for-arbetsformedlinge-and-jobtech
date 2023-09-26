@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { getEnrichedOccupations } from "../services/serviceBase";
 import { IOccupationDetails } from "../models/IOccupationDetails";
+import { useEffect } from "react";
+
 import {
   DigiLayoutContainer,
   DigiTypography,
@@ -27,34 +29,60 @@ const StyledH1 = styled.h1`
   font-weight: 700;
 `;
 
+
 export const SelectedJob = () => {
-  const { occupationId } = useParams();
+  const { occupationId: paramOccupationId } = useParams();
   const [occupationDetails, setOccupationDetails] = useState<
     IOccupationDetails | undefined
   >(undefined);
 
-  if (occupationDetails === undefined && occupationId !== undefined) {
-    getEnrichedOccupations(occupationId).then((response) => {
-      setOccupationDetails(response);
-    });
-  }
+  useEffect(() => {
+    console.log("Occupation Details State:", occupationDetails);
+    const occupationId =
+      paramOccupationId || localStorage.getItem("selectedOccupationId");
+
+    if (occupationId && !occupationDetails) {
+      getEnrichedOccupations(occupationId).then((response) => {
+        console.log("API Response:", response);
+
+        console.log("Metadata Object:", response.metadata);
+        console.log(
+          "Enriched Candidates Term Frequency Object:",
+          response.metadata?.enriched_candidates_term_frequency
+        );
+
+        setOccupationDetails(response);
+      });
+    }
+  }, [occupationDetails, paramOccupationId]);
 
   return (
     <>
+
       <DigiTypography>
         <DigiLayoutContainer style={{ padding: "0" }}>
-          <StyledH1>
+           <StyledH1>
             <h1>{occupationDetails?.occupation_label}</h1>
           </StyledH1>
+          
           <StyledBox>
-            {/* <p>ID: {occupationDetails?.id}</p> Vill vi visa ID? */}
-            <p>
-              Beskrivning:{" "}
-              {occupationDetails?.occupation_group.occupation_group_label}
-            </p>
+      {occupationDetails?.metadata?.enriched_candidates_term_frequency
+        ?.competencies &&
+      occupationDetails.metadata.enriched_candidates_term_frequency.competencies
+        .length > 0 ? (
+        occupationDetails.metadata.enriched_candidates_term_frequency.competencies.map(
+          (competency, index) => (
+            <p key={index}>Competency: {competency.term}</p>
+          )
+        )
+      ) : (
+        <p>No Competencies Found</p>
+      )}
+
           </StyledBox>
         </DigiLayoutContainer>
       </DigiTypography>
+
     </>
   );
 };

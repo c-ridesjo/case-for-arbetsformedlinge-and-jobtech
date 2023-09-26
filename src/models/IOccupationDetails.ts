@@ -1,3 +1,17 @@
+export interface ICompetency {
+  term: string;
+  percent_for_occupation: number;
+}
+
+export interface IMetadata {
+  enriched_ads_count: number;
+  enriched_ads_total_count: number;
+  enriched_ads_percent_of_total: number;
+  enriched_candidates_term_frequency: {
+    competencies: ICompetency[];
+  };
+}
+
 export interface IOccupationDetails {
   id: string;
   occupation_label: string;
@@ -8,4 +22,5 @@ export interface IOccupationDetails {
     concept_taxonomy_id: string;
     ssyk: string;
   };
+  metadata?: IMetadata; 
 }

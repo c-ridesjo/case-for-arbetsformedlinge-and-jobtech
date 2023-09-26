@@ -1,18 +1,27 @@
 import { SearchResultProps } from "../models/ISearchResult";
 import { DigiLinkButton, DigiTypography } from "@digi/arbetsformedlingen-react";
 import { VerticalLayout } from "./Styled/StyledSearchResult";
+import { useNavigate } from "react-router-dom";
 
 export const SearchResult = ({
   title,
   occupationGroupLabel,
-}: SearchResultProps) => {
+  occupationId,
+}: SearchResultProps & { occupationId: string }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    localStorage.setItem("selectedOccupationId", occupationId);
+    navigate(`/selected-job/${occupationId}`);
+  };
+
   return (
     <DigiTypography af-variation="small">
       <VerticalLayout>
         <h2>{title}</h2>
         <p>{occupationGroupLabel}</p>
         <DigiLinkButton
-          af-href="#"
+          onClick={handleClick}
           af-size="medium"
           af-variation="primary"
           afHref={""}

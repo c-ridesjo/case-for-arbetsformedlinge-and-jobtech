@@ -16,11 +16,6 @@ interface SearchResultsProps {
 export const SearchResults = ({ responseData }: SearchResultsProps) => {
   const navigate = useNavigate();
 
-  console.log("respons", responseData);
-
-  // VIKTIGT! Koden fram till return ska rensas bort och ersättas
-  // Vi vill använda oss av responseData istället
-
   if (responseData === undefined) {
     return null;
   }
@@ -40,6 +35,7 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
             Tillbaka
           </DigiButton>
           <ColumnContainer>
+
             {responseData.related_occupations?.map(
               (occupation: IOccupationDetails) => (
                 <Column key={occupation.id}>
@@ -53,6 +49,7 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
                 </Column>
               )
             )}
+
           </ColumnContainer>
         </DigiLayoutContainer>
       </DigiTypography>
