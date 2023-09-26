@@ -30,7 +30,6 @@ const StyledH2 = styled.h2`
   font-weight: 700;
 `;
 
-
 export const SelectedJob = () => {
   const { occupationId: paramOccupationId } = useParams();
   const [occupationDetails, setOccupationDetails] = useState<
@@ -60,9 +59,9 @@ export const SelectedJob = () => {
 
   return (
     <>
-
       <DigiTypography>
         <DigiLayoutContainer style={{ padding: "0" }}>
+
         <DigiButton
             af-size="medium"
             af-variation="primary"
@@ -76,23 +75,19 @@ export const SelectedJob = () => {
           </StyledH2>
           
           <StyledBox>
-      {occupationDetails?.metadata?.enriched_candidates_term_frequency
-        ?.competencies &&
-      occupationDetails.metadata.enriched_candidates_term_frequency.competencies
-        .length > 0 ? (
-        occupationDetails.metadata.enriched_candidates_term_frequency.competencies.map(
-          (competency, index) => (
-            <p key={index}>Competency: {competency.term}</p>
-          )
-        )
-      ) : (
-        <p>No Competencies Found</p>
-      )}
-
+            {occupationDetails?.metadata?.enriched_candidates_term_frequency
+              ?.competencies ? (
+              occupationDetails.metadata.enriched_candidates_term_frequency.competencies
+                .slice(0, 20)
+                .map((competency, index) => (
+                  <p key={index}>Competency: {competency.term}</p>
+                ))
+            ) : (
+              <p>No Competencies Found</p>
+            )}
           </StyledBox>
         </DigiLayoutContainer>
       </DigiTypography>
-
     </>
   );
 };
