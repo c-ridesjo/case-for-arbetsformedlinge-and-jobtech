@@ -19,6 +19,14 @@ const StyledBox = styled.div`
   background-color: #005b4a;
 `;
 
+const StyledH1 = styled.h1`
+  color: #ffeccc;
+  text-align: center;
+  margin: 50px auto 0;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
 export const SelectedJob = () => {
   const { occupationId } = useParams();
   const [occupationDetails, setOccupationDetails] = useState<
@@ -35,9 +43,11 @@ export const SelectedJob = () => {
     <>
       <DigiTypography>
         <DigiLayoutContainer style={{ padding: "0" }}>
-          <h1>{occupationDetails?.occupation_label}</h1>
+          <StyledH1>
+            <h1>{occupationDetails?.occupation_label}</h1>
+          </StyledH1>
           <StyledBox>
-            <p>ID: {occupationDetails?.id}</p>
+            {/* <p>ID: {occupationDetails?.id}</p> Vill vi visa ID? */}
             <p>
               Beskrivning:{" "}
               {occupationDetails?.occupation_group.occupation_group_label}
