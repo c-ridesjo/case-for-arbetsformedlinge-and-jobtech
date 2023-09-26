@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { getEnrichedOccupations } from "../services/serviceBase";
 import { IOccupationDetails } from "../models/IOccupationDetails";
 import { useEffect } from "react";
 
 import {
+  DigiButton,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
@@ -21,7 +22,7 @@ const StyledBox = styled.div`
   background-color: #487465;
 `;
 
-const StyledH1 = styled.h1`
+const StyledH2 = styled.h2`
   color: #ffeccc;
   text-align: center;
   margin: 50px auto 0;
@@ -36,6 +37,7 @@ export const SelectedJob = () => {
   const [occupationDetails, setOccupationDetails] = useState<
     IOccupationDetails | undefined
   >(undefined);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("Occupation Details State:", occupationDetails);
@@ -61,20 +63,27 @@ export const SelectedJob = () => {
     <>
       <DigiTypography>
         <DigiLayoutContainer style={{ padding: "0" }}>
-          <StyledH1>
-            <h1>{occupationDetails?.occupation_label}</h1>
-          </StyledH1>
 
+        <DigiButton
+            af-size="medium"
+            af-variation="primary"
+            af-full-width="false"
+            onClick={() => navigate("/")}
+          >
+            Hem
+          </DigiButton>
+           <StyledH2>
+            {occupationDetails?.occupation_label}
+          </StyledH2>
+          
           <StyledBox>
             {occupationDetails?.metadata?.enriched_candidates_term_frequency
-              ?.competencies &&
-            occupationDetails.metadata.enriched_candidates_term_frequency
-              .competencies.length > 0 ? (
-              occupationDetails.metadata.enriched_candidates_term_frequency.competencies.map(
-                (competency, index) => (
+              ?.competencies ? (
+              occupationDetails.metadata.enriched_candidates_term_frequency.competencies
+                .slice(0, 20)
+                .map((competency, index) => (
                   <p key={index}>Competency: {competency.term}</p>
-                )
-              )
+                ))
             ) : (
               <p>No Competencies Found</p>
             )}
