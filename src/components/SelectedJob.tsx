@@ -4,6 +4,32 @@ import { getEnrichedOccupations } from "../services/serviceBase";
 import { IOccupationDetails } from "../models/IOccupationDetails";
 import { useEffect } from "react";
 
+import {
+  DigiLayoutContainer,
+  DigiTypography,
+} from "@digi/arbetsformedlingen-react";
+import styled from "styled-components";
+
+const StyledBox = styled.div`
+  border: 1px solid black;
+  text-align: center;
+  color: #ffeccc;
+  padding: 50px;
+  width: fit-content;
+  margin: 50px auto 0;
+  border-radius: 6px;
+  background-color: #005b4a;
+`;
+
+const StyledH1 = styled.h1`
+  color: #ffeccc;
+  text-align: center;
+  margin: 50px auto 0;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+
 export const SelectedJob = () => {
   const { occupationId: paramOccupationId } = useParams();
   const [occupationDetails, setOccupationDetails] = useState<
@@ -32,7 +58,14 @@ export const SelectedJob = () => {
 
   return (
     <>
-      <h3>{occupationDetails?.occupation_label}</h3>
+
+      <DigiTypography>
+        <DigiLayoutContainer style={{ padding: "0" }}>
+           <StyledH1>
+            <h1>{occupationDetails?.occupation_label}</h1>
+          </StyledH1>
+          
+          <StyledBox>
       {occupationDetails?.metadata?.enriched_candidates_term_frequency
         ?.competencies &&
       occupationDetails.metadata.enriched_candidates_term_frequency.competencies
@@ -45,6 +78,11 @@ export const SelectedJob = () => {
       ) : (
         <p>No Competencies Found</p>
       )}
+
+          </StyledBox>
+        </DigiLayoutContainer>
+      </DigiTypography>
+
     </>
   );
 };

@@ -1,6 +1,6 @@
-import { createContext } from "react";
-import { IFormData } from "../models/IFormData";
-
+//import { createContext } from "react";
+//import { IFormData } from "../models/IFormData";
+/*
 export interface IFormDataContextType {
   formData: IFormData;
   setFormData: (
@@ -20,4 +20,4 @@ const FormDataContext = createContext<IFormDataContextType>({
   setFormData: () => {},
 });
 
-export default FormDataContext;
+export default FormDataContext; */

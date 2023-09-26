@@ -1,56 +1,24 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
 import {
+  DigiButton,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
-import { DigiButton } from "@digi/arbetsformedlingen-react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { IOccupationDetails } from "../models/IOccupationDetails";
+import { IResponseData } from "../models/IResponseData";
 import { SearchResult } from "./SearchResult";
-import { OccupationData } from "../models/IOccupationData";
 import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 
-export const SearchResults = () => {
-  const [searchParams] = useSearchParams();
-  const educationTitle = searchParams.get("educationTitle") || "";
+interface SearchResultsProps {
+  responseData: IResponseData;
+}
 
-  const [data, setData] = useState<OccupationData[]>([]);
+export const SearchResults = ({ responseData }: SearchResultsProps) => {
   const navigate = useNavigate();
-  const [error, setError] = useState<string | null>(null);
 
-  const fetchOccupationsByText = async () => {
-    setError(null);
-    try {
-      const response = await axios.post(
-        "https://jobed-connect-api.jobtechdev.se/v1/occupations/match-by-text",
-        {
-          input_text: "front end developer",
-          input_headline: "systemutvecklare",
-          limit: 10,
-          offset: 0,
-          include_metadata: false,
-        }
-      );
-
-      console.log('API Response: ', response.data);
-      setData(response.data.related_occupations);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error("Error fetching data:", error.message);
-      } else {
-        console.error("An unknown error occurred:", error);
-      }
-      setError(
-        "Ett fel uppstod vid hämtning av data. Vänligen försök igen senare."
-      );
-    }
-  };
-
-  useEffect(() => {
-    console.log("educationTitle value:", educationTitle);
-    fetchOccupationsByText();
-  }, [educationTitle]);
+  if (responseData === undefined) {
+    return null;
+  }
 
   return (
     <>
@@ -66,20 +34,22 @@ export const SearchResults = () => {
           >
             Tillbaka
           </DigiButton>
-          {error && <p style={{ color: "red" }}>{error}</p>}
           <ColumnContainer>
-            {data.map((occupation: OccupationData) => (
-              <Column key={occupation.id}>
-                <SearchResult
-                  title={occupation.occupation_label}
-                  occupationGroupLabel={
-                    occupation.occupation_group.occupation_group_label
-                  }
-                  occupationId={occupation.id}
-                  link={`/selected-job/${occupation.id}`}
-                />
-              </Column>
-            ))}
+
+            {responseData.related_occupations?.map(
+              (occupation: IOccupationDetails) => (
+                <Column key={occupation.id}>
+                  <SearchResult
+                    title={occupation.occupation_label}
+                    occupationGroupLabel={
+                      occupation.occupation_group.occupation_group_label
+                    }
+                    link={`/selected-job/${occupation.id}`}
+                  />
+                </Column>
+              )
+            )}
+
           </ColumnContainer>
         </DigiLayoutContainer>
       </DigiTypography>
