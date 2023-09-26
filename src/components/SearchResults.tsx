@@ -43,7 +43,9 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
                     title={occupation.occupation_label}
                     occupationGroupLabel={
                       occupation.occupation_group.occupation_group_label
+                   
                     }
+                     occupationId={occupation.id}
                     link={`/selected-job/${occupation.id}`}
                   />
                 </Column>
