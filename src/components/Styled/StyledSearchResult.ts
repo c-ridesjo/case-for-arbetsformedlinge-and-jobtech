@@ -2,15 +2,19 @@ import styled from "styled-components";
 
 export const ColumnContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  //flex-wrap: wrap; använd för desktop 
   justify-content: center;
-  align-items: flex-start;
-  margin-top: 2rem;
+  align-items: center;
+  //margin-top: 2rem;
+  margin: auto;
+  max-width: 17rem;
 `;
 
 export const Column = styled.div`
-  width: 37%;
   margin: 0 0.5rem;
+  max-width: 20rem;
+  overflow: hidden;
 `;
 
 export const VerticalLayout = styled.div`
