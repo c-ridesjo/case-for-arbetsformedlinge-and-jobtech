@@ -13,10 +13,9 @@ header {
   // text-align: center;
 }
 
-// main {
-//   margin: 1rem;
-//   padding-bottom: 3rem;
-// }
+main {
+  margin: 2% 20% 2% 20%;
+}
 
 // h1 {
 //   margin: auto;
@@ -102,9 +101,9 @@ header {
 } */
 
 .digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button {
-  background-color: #005b4a;
+  background-color: #D6A66E;
   // border: 1px solid #ffeccc;
-  color: #ffeccc !important;
+  color: #433A2E !important;
   // box-shadow: 0 4px 4px 0 #432e15;
   // border-radius: 0.5rem;
   // margin-left: auto;
@@ -174,7 +173,9 @@ footer {
 //   min-width: 1rem;
 // }
 
-
+.job-container {
+  background-color: #487465;
+}
 
 
 @media screen and (min-width: 900px) {

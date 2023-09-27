@@ -21,6 +21,7 @@ export const SearchResult = ({
 
   return (
     <DigiTypography af-variation="small">
+      <div className="job-container">
       {/* <VerticalLayout> */}
         {/* <TextContainer> */}
           <h2>{title}</h2>
@@ -37,6 +38,8 @@ export const SearchResult = ({
           </DigiLinkButton>
         {/* </ButtonContainer> */}
       {/* </VerticalLayout> */}
+      </div>
+
     </DigiTypography>
   );
 };

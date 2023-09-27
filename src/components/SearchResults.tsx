@@ -7,7 +7,7 @@ import {
 import { IOccupationDetails } from "../models/IOccupationDetails";
 import { IResponseData } from "../models/IResponseData";
 import { SearchResult } from "./SearchResult";
-import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
+//import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 import {
 
 LayoutColumnsVariation
@@ -31,11 +31,15 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
           
         > */}
 
-          <DigiLayoutColumns af-variation={LayoutColumnsVariation.TWO} style={{ backgroundColor: "#FFECCC" }}>
+          <DigiLayoutColumns 
+          af-variation={LayoutColumnsVariation.TWO} 
+          style={{ backgroundColor: "#FFECCC" }}>
 
             {responseData.related_occupations?.map(
               (occupation: IOccupationDetails) => (
-                <div key={occupation.id}>
+                <DigiLayoutContainer 
+                afVerticalPadding
+                key={occupation.id}>
                   <SearchResult
                     title={occupation.occupation_label}
                     occupationGroupLabel={
@@ -45,7 +49,7 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
                      occupationId={occupation.id}
                     link={`/selected-job/${occupation.id}`}
                   />
-                </div>
+                </DigiLayoutContainer>
               )
             )}
 
