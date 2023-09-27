@@ -3,9 +3,10 @@ import { IFormData, SearchForm } from "./SearchForm";
 import { SearchResults } from "./SearchResults";
 import { matchByText } from "../services/serviceBase";
 import { useState } from "react";
+import { IOccupationDetails } from "../models/IOccupationDetails";
 
 export const Home = () => {
-  const [responseData, setResponseData] = useState({});
+  const [responseData, setResponseData] = useState<IOccupationDetails[]>([]);
 
   const handleFormSubmit = async (formData: IFormData) => {
     console.log("data", formData);
