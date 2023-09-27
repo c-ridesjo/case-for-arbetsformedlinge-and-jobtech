@@ -14,22 +14,12 @@ import styled from "styled-components";
 import {
   Competency,
   NoCompetencyFound,
+  StyledBox,
 } from "./Styled/StyledSelectedJob";
 
 
-const StyledBox = styled.div`
-   color: #ffeccc;
-   background-color: #487465; 
-`; 
-
-  
-
 const StyledH2 = styled.h2`
-  color: #ffeccc;
-  /* text-align: center;
-  margin: 50px auto 0;
-  font-size: 2rem;
-  font-weight: 700; */
+  color: #433a2e;;
 `;
 
 export const SelectedJob = () => {
@@ -71,11 +61,10 @@ export const SelectedJob = () => {
           >
             Hem
           </DigiButton>
-          <StyledH2>{occupationDetails?.occupation_label}</StyledH2>
+          <StyledH2>Kompetenser för: {occupationDetails?.occupation_label}</StyledH2>
           
           <DigiLayoutContainer>
             <StyledBox>
-              <h2>Kompetenser</h2>
               {occupationDetails?.metadata?.enriched_candidates_term_frequency
                 ?.competencies ? (
                 <>

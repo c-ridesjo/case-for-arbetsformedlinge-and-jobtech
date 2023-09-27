@@ -9,6 +9,10 @@ header {
   background-color: #487465;
 }
 
+main {
+  background-color: #ffeccc;
+}
+
 .sc-digi-layout-block-h {
   --digi--layout-block--background--primary: #ffeccc;
   min-height: 40vh;
@@ -74,7 +78,6 @@ header {
 
 footer {
   background-color: #487465;
-
 }
 
 @media (prefers-color-scheme: light) {
