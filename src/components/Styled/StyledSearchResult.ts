@@ -27,15 +27,45 @@ export const Column = styled.div`
 `;
 
 export const VerticalLayout = styled.div`
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 26rem;
-  margin: 10px;
-  margin-top: 20px;
+  align-items: center; 
+  justify-content: center;
+  width: 100%; 
+  height: 10rem; 
+  padding: 10px;
+  margin: 10px 0;
   background-color: #487465;
   color: #ffeccc;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: #432e15;
+  border: 1px solid #432e15;
   border-radius: 2px;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 900px) {
+    flex-direction: row; 
+    align-items: flex-start; 
+    justify-content: space-between; 
+    width: 28rem; 
+  }
+`;
+
+export const TextContainer = styled.div`
+  text-align: center; 
+  overflow: hidden;
+
+  @media screen and (min-width: 900px) {
+    text-align: left;
+    flex: 1; 
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 900px) {
+    align-items: flex-end; 
+    justify-content: flex-end;
+  }
 `;

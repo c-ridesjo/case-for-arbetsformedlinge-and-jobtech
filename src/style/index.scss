@@ -11,11 +11,14 @@ header {
 
 main {
   margin: 1rem;
+  padding-bottom: 3rem;
 }
 
 h1 {
   margin: auto;
 }
+
+
 
 a {
   text-decoration: none;
@@ -100,6 +103,7 @@ form {
   color: #ffeccc !important;
   box-shadow: 0 4px 4px 0 #432e15;
   border-radius: 0.5rem;
+  margin-left: auto;
 }
 
 .digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button:hover {
@@ -117,6 +121,10 @@ form {
 }
 
 .digi-typography h2 {
+  color: #ffeccc;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-align: center;
   margin: 0; /* Reset margin */
   padding: 0; /* Reset padding */
 }
@@ -135,6 +143,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100vw;
+  box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: light) {
