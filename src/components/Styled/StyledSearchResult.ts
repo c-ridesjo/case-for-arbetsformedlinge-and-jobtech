@@ -2,15 +2,28 @@ import styled from "styled-components";
 
 export const ColumnContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  margin-top: 2rem;
+  align-items: center;
+  margin: auto;
+  max-width: 17rem;
+
+  @media screen and (min-width: 900px) {
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 85%;
+  }
 `;
 
 export const Column = styled.div`
-  width: 37%;
   margin: 0 0.5rem;
+  max-width: 20rem;
+  overflow: hidden;
+
+  @media screen and (min-width: 900px) {
+    overflow: visible;
+    max-width: 90%;
+  }
 `;
 
 export const VerticalLayout = styled.div`
