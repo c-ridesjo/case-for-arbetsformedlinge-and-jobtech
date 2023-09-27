@@ -30,6 +30,7 @@ const StyledH2 = styled.h2`
   font-weight: 700;
   @media (prefers-color-scheme: light) {
     color: #432E15;
+  }
 `;
 
 export const SelectedJob = () => {
