@@ -1,5 +1,5 @@
 import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
-import { SearchForm } from "./SearchForm";
+import { IFormData, SearchForm } from "./SearchForm";
 import { SearchResults } from "./SearchResults";
 import { matchByText } from "../services/serviceBase";
 import { useState } from "react";
@@ -7,10 +7,7 @@ import { useState } from "react";
 export const Home = () => {
   const [responseData, setResponseData] = useState({});
 
-  const handleFormSubmit = async (formData: {
-    educationTitle: string;
-    description: string;
-  }) => {
+  const handleFormSubmit = async (formData: IFormData) => {
     console.log("data", formData);
     try {
       const dataFromResponse = await matchByText(
