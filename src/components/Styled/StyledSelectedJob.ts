@@ -35,6 +35,6 @@ export const Competency = styled.p`
 
 export const NoCompetencyFound = styled.p`
   color: red;
-  text-align: center;
-  margin-top: 1rem;
+  /* text-align: center;
+  margin-top: 1rem; */
 `;

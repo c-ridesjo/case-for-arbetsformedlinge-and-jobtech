@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 import {
   DigiButton,
+  DigiLayoutBlock,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
@@ -16,23 +17,23 @@ import {
   NoCompetencyFound,
 } from "./Styled/StyledSelectedJob";
 
-const StyledBox = styled.div`
-  border: 1px solid black;
-  text-align: center;
-  color: #ffeccc;
-  padding: 50px;
-  width: 20rem;
-  margin: 50px auto 0;
-  border-radius: 6px;
-  background-color: #487465;
-`;
+// const StyledBox = styled.div`
+//   /* border: 1px solid black;
+//   text-align: center; */
+//   color: #ffeccc;
+//   /* padding: 50px;
+//   width: 20rem;
+//   margin: 50px auto 0;
+//   border-radius: 6px; */
+//   background-color: #487465;
+// `;
 
 const StyledH2 = styled.h2`
   color: #ffeccc;
-  text-align: center;
+  /* text-align: center;
   margin: 50px auto 0;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 700; */
   @media (prefers-color-scheme: light) {
     color: #432e15;
   }
@@ -68,7 +69,7 @@ export const SelectedJob = () => {
   return (
     <>
       <DigiTypography>
-        <DigiLayoutContainer style={{ padding: "0" }}>
+        <DigiLayoutBlock>
           <DigiButton
             af-size="medium"
             af-variation="primary"
@@ -79,7 +80,7 @@ export const SelectedJob = () => {
           </DigiButton>
           <StyledH2>{occupationDetails?.occupation_label}</StyledH2>
 
-          <StyledBox>
+          <DigiLayoutContainer>
             <h2>Kompetenser</h2>
             <Line />
             {occupationDetails?.metadata?.enriched_candidates_term_frequency
@@ -94,8 +95,8 @@ export const SelectedJob = () => {
             ) : (
               <NoCompetencyFound>No Competencies Found</NoCompetencyFound>
             )}
-          </StyledBox>
-        </DigiLayoutContainer>
+          </DigiLayoutContainer>
+        </DigiLayoutBlock>
       </DigiTypography>
     </>
   );

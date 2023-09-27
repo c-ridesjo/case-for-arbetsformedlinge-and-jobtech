@@ -1,10 +1,10 @@
 import { SearchResultProps } from "../models/ISearchResult";
 import { DigiLinkButton, DigiTypography } from "@digi/arbetsformedlingen-react";
-import {
-  ButtonContainer,
-  TextContainer,
-  VerticalLayout,
-} from "./Styled/StyledSearchResult";
+// import {
+//   ButtonContainer,
+//   TextContainer,
+//   VerticalLayout,
+// } from "./Styled/StyledSearchResult";
 import { useNavigate } from "react-router-dom";
 
 export const SearchResult = ({
@@ -21,12 +21,12 @@ export const SearchResult = ({
 
   return (
     <DigiTypography af-variation="small">
-      <VerticalLayout>
-        <TextContainer>
+      {/* <VerticalLayout> */}
+        {/* <TextContainer> */}
           <h2>{title}</h2>
           <p>{occupationGroupLabel}</p>
-        </TextContainer>
-        <ButtonContainer>
+        {/* </TextContainer> */}
+        {/* <ButtonContainer> */}
           <DigiLinkButton
             onClick={handleClick}
             af-size="medium"
@@ -35,8 +35,8 @@ export const SearchResult = ({
           >
             Läs mer här
           </DigiLinkButton>
-        </ButtonContainer>
-      </VerticalLayout>
+        {/* </ButtonContainer> */}
+      {/* </VerticalLayout> */}
     </DigiTypography>
   );
 };
