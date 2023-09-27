@@ -9,8 +9,8 @@ import { IResponseData } from "../models/IResponseData";
 import { SearchResult } from "./SearchResult";
 //import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 import {
-
-LayoutColumnsVariation
+  LayoutColumnsElement,
+  LayoutColumnsVariation
 } from "@digi/arbetsformedlingen";
 
 interface SearchResultsProps {
@@ -27,13 +27,14 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
   return (
     <>
       <DigiTypography af-variation="large">
-        {/* <DigiLayoutBlock
+         <DigiLayoutBlock
           
-        > */}
+        > 
 
           <DigiLayoutColumns 
-          af-variation={LayoutColumnsVariation.TWO} 
-          style={{ backgroundColor: "#FFECCC" }}>
+            afElement={LayoutColumnsElement.DIV}
+            afVariation={LayoutColumnsVariation.TWO} 
+            >
 
             {responseData.related_occupations?.map(
               (occupation: IOccupationDetails) => (
@@ -54,7 +55,7 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
             )}
 
           </DigiLayoutColumns>
-        {/* </DigiLayoutBlock> */}
+         </DigiLayoutBlock> 
       </DigiTypography>
     </>
   );

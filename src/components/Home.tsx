@@ -27,9 +27,14 @@ export const Home = () => {
     <>
       <DigiTypographyMeta>
         <DigiLayoutBlock>
-          <SearchForm onSubmit={handleFormSubmit}></SearchForm>
+          <DigiLayoutBlock>
+            <DigiLayoutBlock>
+              <SearchForm onSubmit={handleFormSubmit}></SearchForm>
+            </DigiLayoutBlock>
+          </DigiLayoutBlock>
+
+          <SearchResults responseData={responseData}></SearchResults>
         </DigiLayoutBlock>
-        <SearchResults responseData={responseData}></SearchResults>
       </DigiTypographyMeta>
     </>
   );

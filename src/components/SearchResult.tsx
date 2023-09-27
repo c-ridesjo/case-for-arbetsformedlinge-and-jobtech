@@ -1,5 +1,5 @@
 import { SearchResultProps } from "../models/ISearchResult";
-import { DigiLinkButton, DigiTypography } from "@digi/arbetsformedlingen-react";
+import { DigiLayoutContainer, DigiLinkButton, DigiTypography } from "@digi/arbetsformedlingen-react";
 // import {
 //   ButtonContainer,
 //   TextContainer,
@@ -21,7 +21,7 @@ export const SearchResult = ({
 
   return (
     <DigiTypography af-variation="small">
-      <div className="job-container">
+      <DigiLayoutContainer afVerticalPadding>
       {/* <VerticalLayout> */}
         {/* <TextContainer> */}
           <h2>{title}</h2>
@@ -38,7 +38,7 @@ export const SearchResult = ({
           </DigiLinkButton>
         {/* </ButtonContainer> */}
       {/* </VerticalLayout> */}
-      </div>
+      </DigiLayoutContainer>
 
     </DigiTypography>
   );
