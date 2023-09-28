@@ -3,17 +3,14 @@ import {
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { IOccupationDetails } from "../models/IOccupationDetails";
-import { IResponseData } from "../models/IResponseData";
 import { SearchResult } from "./SearchResult";
 import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 
 interface SearchResultsProps {
-  responseData: IResponseData;
+  responseData: IOccupationDetails[];
 }
 
 export const SearchResults = ({ responseData }: SearchResultsProps) => {
-  
-
   if (responseData === undefined) {
     return null;
   }
@@ -27,7 +24,7 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
 
           <ColumnContainer>
 
-            {responseData.related_occupations?.map(
+            {responseData?.map(
               (occupation: IOccupationDetails) => (
                 <Column key={occupation.id}>
                   <SearchResult
