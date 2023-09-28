@@ -29,7 +29,9 @@ export const Home = () => {
         <DigiLayoutBlock>
           <DigiLayoutBlock>
             <DigiLayoutBlock>
-              <SearchForm onSubmit={handleFormSubmit}></SearchForm>
+              <DigiLayoutBlock>
+                <SearchForm onSubmit={handleFormSubmit}></SearchForm>
+              </DigiLayoutBlock>
             </DigiLayoutBlock>
           </DigiLayoutBlock>
 

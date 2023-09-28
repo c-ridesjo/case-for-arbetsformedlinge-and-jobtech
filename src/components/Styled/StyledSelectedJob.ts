@@ -40,8 +40,12 @@ export const Competency = styled.li`
   }*/
 `;
 
+export const StyledH2 = styled.h2`
+  color: #433a2e;;
+`;
+
 export const NoCompetencyFound = styled.p`
-  color: red;
+  color: white;
   /* text-align: center;
   margin-top: 1rem; */
 `;

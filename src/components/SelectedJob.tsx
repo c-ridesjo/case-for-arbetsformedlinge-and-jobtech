@@ -10,17 +10,16 @@ import {
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
-import styled from "styled-components";
+
 import {
   Competency,
   NoCompetencyFound,
   StyledBox,
+  StyledH2
 } from "./Styled/StyledSelectedJob";
 
 
-const StyledH2 = styled.h2`
-  color: #433a2e;;
-`;
+
 
 export const SelectedJob = () => {
   const { occupationId: paramOccupationId } = useParams();
