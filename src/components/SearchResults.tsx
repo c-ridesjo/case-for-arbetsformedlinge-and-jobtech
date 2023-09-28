@@ -1,10 +1,16 @@
 import {
+  DigiLayoutBlock,
+  DigiLayoutColumns,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { IOccupationDetails } from "../models/IOccupationDetails";
 import { SearchResult } from "./SearchResult";
-import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
+//import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
+import {
+  LayoutColumnsElement,
+  LayoutColumnsVariation
+} from "@digi/arbetsformedlingen";
 
 interface SearchResultsProps {
   responseData: IOccupationDetails[];
@@ -18,15 +24,20 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
   return (
     <>
       <DigiTypography af-variation="large">
-        <DigiLayoutContainer
-          style={{ padding: "0", backgroundColor: "#FFECCC" }}
-        >
+         <DigiLayoutBlock
+          
+        > 
 
-          <ColumnContainer>
+          <DigiLayoutColumns 
+            afElement={LayoutColumnsElement.DIV}
+            afVariation={LayoutColumnsVariation.TWO} 
+            >
 
             {responseData?.map(
               (occupation: IOccupationDetails) => (
-                <Column key={occupation.id}>
+                <DigiLayoutContainer 
+                afVerticalPadding
+                key={occupation.id}>
                   <SearchResult
                     title={occupation.occupation_label}
                     occupationGroupLabel={
@@ -36,12 +47,12 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
                      occupationId={occupation.id}
                     link={`/selected-job/${occupation.id}`}
                   />
-                </Column>
+                </DigiLayoutContainer>
               )
             )}
 
-          </ColumnContainer>
-        </DigiLayoutContainer>
+          </DigiLayoutColumns>
+         </DigiLayoutBlock> 
       </DigiTypography>
     </>
   );

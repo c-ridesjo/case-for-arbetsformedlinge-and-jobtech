@@ -1,5 +1,7 @@
-import { DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
+
+import { DigiLayoutBlock, DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
 import { IFormData, SearchForm } from "./SearchForm";
+
 import { SearchResults } from "./SearchResults";
 import { matchByText } from "../services/serviceBase";
 import { useState } from "react";
@@ -24,10 +26,17 @@ export const Home = () => {
   return (
     <>
       <DigiTypographyMeta>
-        <div className="form-container">
-          <SearchForm onSubmit={handleFormSubmit}></SearchForm>
-        </div>
-        <SearchResults responseData={responseData}></SearchResults>
+        <DigiLayoutBlock>
+          <DigiLayoutBlock>
+            <DigiLayoutBlock>
+              <DigiLayoutBlock>
+                <SearchForm onSubmit={handleFormSubmit}></SearchForm>
+              </DigiLayoutBlock>
+            </DigiLayoutBlock>
+          </DigiLayoutBlock>
+
+          <SearchResults responseData={responseData}></SearchResults>
+        </DigiLayoutBlock>
       </DigiTypographyMeta>
     </>
   );

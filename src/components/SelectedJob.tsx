@@ -6,32 +6,18 @@ import { useEffect } from "react";
 
 import {
   DigiButton,
+  DigiLayoutBlock,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
-import styled from "styled-components";
 
-const StyledBox = styled.div`
-  border: 1px solid black;
-  text-align: center;
-  color: #ffeccc;
-  padding: 50px;
-  width: fit-content;
-  margin: 50px auto 0;
-  border-radius: 6px;
-  background-color: #487465;
-`;
+import {
+  Competency,
+  NoCompetencyFound,
+  StyledBox,
+  StyledH2
+} from "./Styled/StyledSelectedJob";
 
-const StyledH2 = styled.h2`
-  color: #ffeccc;
-  text-align: center;
-  margin: 50px auto 0;
-  font-size: 2rem;
-  font-weight: 700;
-  @media (prefers-color-scheme: light) {
-    color: #432E15;
-  }
-`;
 
 export const SelectedJob = () => {
   const { occupationId: paramOccupationId } = useParams();
@@ -63,9 +49,8 @@ export const SelectedJob = () => {
   return (
     <>
       <DigiTypography>
-        <DigiLayoutContainer style={{ padding: "0" }}>
-
-        <DigiButton
+        <DigiLayoutBlock>
+          <DigiButton
             af-size="medium"
             af-variation="primary"
             af-full-width="false"
@@ -73,23 +58,26 @@ export const SelectedJob = () => {
           >
             Hem
           </DigiButton>
-           <StyledH2>
-            {occupationDetails?.occupation_label}
-          </StyledH2>
+          <StyledH2>Kompetenser för: {occupationDetails?.occupation_label}</StyledH2>
           
-          <StyledBox>
-            {occupationDetails?.metadata?.enriched_candidates_term_frequency
-              ?.competencies ? (
-              occupationDetails.metadata.enriched_candidates_term_frequency.competencies
-                .slice(0, 20)
-                .map((competency, index) => (
-                  <p key={index}>Competency: {competency.term}</p>
-                ))
-            ) : (
-              <p>No Competencies Found</p>
-            )}
-          </StyledBox>
-        </DigiLayoutContainer>
+          <DigiLayoutContainer>
+            <StyledBox>
+              {occupationDetails?.metadata?.enriched_candidates_term_frequency
+                ?.competencies ? (
+                <>
+                  {occupationDetails.metadata.enriched_candidates_term_frequency.competencies
+                    .slice(0, 20)
+                    .map((competency, index) => (
+                    <Competency key={index}>{competency.term}</Competency>
+                    ))}
+                </>
+              ) : (
+                <NoCompetencyFound>No Competencies Found</NoCompetencyFound>
+              )}
+            </StyledBox>            
+          </DigiLayoutContainer>
+
+        </DigiLayoutBlock>
       </DigiTypography>
     </>
   );

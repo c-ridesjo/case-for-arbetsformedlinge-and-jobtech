@@ -1,92 +1,72 @@
+$font-path: "~node_modules/@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/assets/fonts/" !default;
+
+@import '@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.scss';
+
+
 :root {
   color-scheme: light dark;
-  color: #fff7eb;
-  background-color: #242424;
+  color: #ffeccc;
+  background-color: #487465;
+  text-align: center;
 }
 
 header {
   background-color: #487465;
-  padding: 3rem;
 }
 
 main {
-  margin: 1rem;
+  background-color: #ffeccc;
 }
 
-h1 {
-  margin: auto;
+.sc-digi-layout-container-h .digi-layout-container--vertical-padding.sc-digi-layout-container {
+  background-color: #487465;
+  color: #ffeccc;
 }
 
-a {
-  text-decoration: none;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 3rem;
+.sc-digi-layout-block-h {
+  --digi--layout-block--background--primary: #ffeccc;
+  min-height: 40vh;
 }
 
 .digi-form-input__input.sc-digi-form-input {
-  padding: 1rem;
-  border: none;
-  font-size: 1.25rem;
-  color: #432e15;
+  color: #433a2e;
   background-color: #ffeccc;
-  border: #433a2e solid 0.1rem;
-  width: 17rem;
 }
 
 .sc-digi-form-textarea-h .digi-form-textarea__textarea.sc-digi-form-textarea {
-  padding: 1rem;
-  border: none;
-  font-size: 1.25rem;
-  color: #432e15;
+  color: #433a2e;
   background-color: #ffeccc;
-  border: #433a2e solid 0.1rem;
-  width: 17rem;
 }
 
 .sc-digi-form-label-h .digi-form-label__label--label.sc-digi-form-label {
-  font-size: 1.25rem;
-  color: #fff7eb;
+  color: #433a2e;
 }
 
 .sc-digi-button-h .digi-button--full-width.sc-digi-button {
   background-color: #d6a66e;
   color: #433a2e;
-  padding: 1rem;
-  border: none;
-  font-size: 1.25rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  width: 17rem;
 }
 
 .sc-digi-button-h .digi-button--full-width.sc-digi-button:hover {
   background-color: #433a2e;
   color: #d6a66e;
-  border-radius: 0.5rem;
+}
+
+.digi-link-button--secondary.sc-digi-link-button-h {
+  --COLOR--DEFAULT: #433a2e;
+  --COLOR--HOVER: #ffeccc;
+  --BORDER-COLOR--DEFAULT: #433a2e;
+  --BORDER-COLOR--HOVER: #ffeccc;
 }
 
 .sc-digi-button-h .digi-button--size-medium.sc-digi-button {
   background-color: #c2945e;
-  color: #432e15;
-  padding: 0.2rem;
-  border: 2px solid black;
-  width: 7rem;
-  font-size: 1.25rem;
-  border-radius: 0.5rem;
-  display: block;
-  box-shadow: 0 4px 4px 0 #432e15;
+  color: #433a2e;
 }
 
 .sc-digi-button-h .digi-button--size-medium.sc-digi-button:hover {
   background-color: #8a612e;
   color: #ffeccc;
-  border-radius: 0.5rem;
 }
 
 /* .sc-digi-link-s>a {
@@ -95,15 +75,12 @@ form {
 } */
 
 .digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button {
-  background-color: #005b4a;
-  border: 1px solid #ffeccc;
-  color: #ffeccc !important;
-  box-shadow: 0 4px 4px 0 #432e15;
-  border-radius: 0.5rem;
+  background-color: #D6A66E;
+  color: #433A2E !important;
 }
 
 .digi-link-button--medium.sc-digi-link-button-h a.sc-digi-link-button:hover {
-  background-color: #004135;
+  background-color: #314f45;
   color: #ffeccc !important;
 }
 
@@ -111,19 +88,6 @@ form {
   color: #005b4a !important;
 }
 
-.digi-typography h1 {
-  margin-left: 0px;
-  font-weight: 100;
-}
-
-.digi-typography h2 {
-  margin: 0; /* Reset margin */
-  padding: 0; /* Reset padding */
-}
-
-div.sc-dmyDmy.aFaBd {
-  width: 30rem;
-}
 
 /* .sc-digi-layout-container-h .digi-layout-container.sc-digi-layout-container {
   background-color: #FFECCC;
@@ -131,15 +95,11 @@ div.sc-dmyDmy.aFaBd {
 
 footer {
   background-color: #487465;
-  padding: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #fff7eb;
+    color: #433a2e;
     background-color: #f0daba;
   }
   a:hover {
@@ -154,8 +114,4 @@ footer {
   .sc-digi-button-h {
     color: #433a2e;
   }
-}
-
-@media screen and (min-width: 900px) {
-  @import '_desktop.scss';
 }
