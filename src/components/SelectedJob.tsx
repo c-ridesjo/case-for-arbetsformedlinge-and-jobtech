@@ -19,8 +19,6 @@ import {
 } from "./Styled/StyledSelectedJob";
 
 
-
-
 export const SelectedJob = () => {
   const { occupationId: paramOccupationId } = useParams();
   const [occupationDetails, setOccupationDetails] = useState<

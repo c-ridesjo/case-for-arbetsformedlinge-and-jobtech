@@ -1,16 +1,16 @@
+
 import { DigiLayoutBlock, DigiTypographyMeta } from "@digi/arbetsformedlingen-react";
-import { SearchForm } from "./SearchForm";
+import { IFormData, SearchForm } from "./SearchForm";
+
 import { SearchResults } from "./SearchResults";
 import { matchByText } from "../services/serviceBase";
 import { useState } from "react";
+import { IOccupationDetails } from "../models/IOccupationDetails";
 
 export const Home = () => {
-  const [responseData, setResponseData] = useState({});
+  const [responseData, setResponseData] = useState<IOccupationDetails[]>([]);
 
-  const handleFormSubmit = async (formData: {
-    educationTitle: string;
-    description: string;
-  }) => {
+  const handleFormSubmit = async (formData: IFormData) => {
     console.log("data", formData);
     try {
       const dataFromResponse = await matchByText(

@@ -18,8 +18,13 @@ import {
 import { Form } from "react-router-dom";
 import { FormEvent, useState } from "react";
 
+export interface IFormData {
+  educationTitle: string;
+  description: string;
+}
+
 interface SearchFormProps {
-  onSubmit: (formData: { educationTitle: string; description: string }) => void;
+  onSubmit: (formData: IFormData) => void;
 }
 
 export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
@@ -28,32 +33,38 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    console.log("Description:", description);
+    
     onSubmit({ educationTitle, description });
   };
 
   return (
     <DigiTypographyMeta>
       <Form onSubmit={handleSubmit}>
-        <DigiFormTextarea
-          afLabel="Beskrivning"
-          afVariation={FormTextareaVariation.MEDIUM}
-          afValidation={FormTextareaValidation.NEUTRAL}
-          onAfOnChange={(event) => setDescription(event.target.value)}
-          afValue={description as string}
-          afName="beskrivning"
-        ></DigiFormTextarea>
-
         <DigiFormInput
           afLabel="Utbildningstitel"
           afVariation={FormInputVariation.MEDIUM}
           afType={FormInputType.TEXT}
           afValidation={FormInputValidation.NEUTRAL}
-          onAfOnChange={(event) =>
+          onAfOnInput={(event) =>
             setEducationTitle(event.target.value.toString())
           }
           afValue={educationTitle}
           afName="utbildningstitel"
         />
+
+        <DigiFormTextarea
+          afLabel="Beskrivning"
+          afVariation={FormTextareaVariation.MEDIUM}
+          afValidation={FormTextareaValidation.NEUTRAL}
+          onAfOnInput={(event) => { 
+            console.log(event);
+            
+            setDescription(event.target.value)}}
+          afValue={description as string}
+          afName="beskrivning"
+        ></DigiFormTextarea>
+
 
         <DigiButton
           afSize={ButtonSize.LARGE}

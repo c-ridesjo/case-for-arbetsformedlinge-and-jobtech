@@ -6,7 +6,7 @@ export const Layout = () => {
     <>
       <DigiTypographyMeta>
         <header>
-          <h1>Logga</h1>
+          <h1><img src="src/assets/logoKN.png" height={130} width={300}/></h1>
         </header>
 
         <main>
