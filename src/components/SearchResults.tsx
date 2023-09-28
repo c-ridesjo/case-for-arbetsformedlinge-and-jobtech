@@ -6,7 +6,6 @@ import {
 } from "@digi/arbetsformedlingen-react";
 import { IOccupationDetails } from "../models/IOccupationDetails";
 import { SearchResult } from "./SearchResult";
-//import { Column, ColumnContainer } from "./Styled/StyledSearchResult";
 import {
   LayoutColumnsElement,
   LayoutColumnsVariation
@@ -25,14 +24,11 @@ export const SearchResults = ({ responseData }: SearchResultsProps) => {
     <>
       <DigiTypography af-variation="large">
          <DigiLayoutBlock
-          
         > 
-
           <DigiLayoutColumns 
             afElement={LayoutColumnsElement.DIV}
             afVariation={LayoutColumnsVariation.TWO} 
             >
-
             {responseData?.map(
               (occupation: IOccupationDetails) => (
                 <DigiLayoutContainer 

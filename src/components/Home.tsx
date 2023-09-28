@@ -11,7 +11,6 @@ export const Home = () => {
   const [responseData, setResponseData] = useState<IOccupationDetails[]>([]);
 
   const handleFormSubmit = async (formData: IFormData) => {
-    console.log("data", formData);
     try {
       const dataFromResponse = await matchByText(
         formData.educationTitle,

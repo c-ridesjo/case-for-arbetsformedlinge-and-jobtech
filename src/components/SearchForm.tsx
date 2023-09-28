@@ -33,8 +33,6 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Description:", description);
-    
     onSubmit({ educationTitle, description });
   };
 
@@ -52,20 +50,15 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
           afValue={educationTitle}
           afName="utbildningstitel"
         />
-
         <DigiFormTextarea
           afLabel="Beskrivning"
           afVariation={FormTextareaVariation.MEDIUM}
           afValidation={FormTextareaValidation.NEUTRAL}
           onAfOnInput={(event) => { 
-            console.log(event);
-            
             setDescription(event.target.value)}}
           afValue={description as string}
           afName="beskrivning"
         ></DigiFormTextarea>
-
-
         <DigiButton
           afSize={ButtonSize.LARGE}
           afVariation={ButtonVariation.PRIMARY}
