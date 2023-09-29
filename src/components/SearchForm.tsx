@@ -65,7 +65,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
           afType={ButtonType.SUBMIT}
           afFullWidth={true}
         >
-          Sök yrken
+          Matcha yrken
         </DigiButton>
       </Form>
     </DigiTypographyMeta>
